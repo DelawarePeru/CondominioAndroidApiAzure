@@ -1,3 +1,26 @@
 <resources>
-    <string name="app_name">CondominioAndroidApi</string>
+
+    <style name="SplashTheme" parent="AppTheme">
+        <item name="android:windowBackground">@drawable/layout_splash</item>
+    </style>
+
+    <string name="app">Condominio Api</string>
+    <string name="app_name"></string>
+
+    <string name="facebook_app_id">624796064735317</string>
+    <string name="fb_login_protocol_scheme">fb624796064735317</string>
+    <string name="google_maps_key">AIzaSyBKIBHie3mzVRfPPxBg38E74gcJJNNcmpk</string>
+
+    <string name="texto_detalle">Ubicado en una de la zonas más residenciales
+    de Surco en la Calle Sor Tita N°335, Urbanización Los Tulipanes, limite
+    con Miraflores</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string-array name="provincia" >
+        <item>Seleccione</item>
+    </string-array>
+    <string-array name="departamento">
+        <item>Seleccione</item>
+    </string-array>
 </resources>

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:excludeFromRecents="true"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:background="@drawable/border_corners_elevation_bottom"
+    android:layout_margin="2dp">
+    <RelativeLayout
+        android:id="@+id/rlTituloItem"
+        android:layout_width="match_parent"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:paddingBottom="5dp"
+        android:paddingTop="20dp"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/tvTitulo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:text="Seleccione un inmueble"/>
+    </RelativeLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvInmuebles"
+        android:layout_below="@+id/rlTituloItem"
+        android:layout_width="match_parent"
+        android:layout_marginBottom="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_height="wrap_content"/>
+    <RelativeLayout
+        android:id="@+id/rlDetalleItem"
+        android:layout_below="@+id/rvInmuebles"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:paddingBottom="0dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:layout_marginBottom="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+
+            >
+            <Button
+                android:id="@+id/btnCancelarEnvio"
+                android:text="Cancelar"
+                android:gravity="center_horizontal|center_vertical"
+                android:paddingEnd="10dp"
+                android:paddingStart="10dp"
+                android:textColor="@android:color/white"
+                android:textAllCaps="false"
+                android:layout_marginRight="20dp"
+                android:textSize="12sp"
+                android:background="@drawable/btn_ripple_red"
+                android:layout_width="120dp"
+                android:layout_height="30dp"
+                android:layout_weight="1.0"/>
+            <Button
+                android:layout_marginEnd="5dp"
+                android:layout_toRightOf="@+id/btnCancelarEnvio"
+                android:id="@+id/btnAceptarEnvio"
+                android:text="Consultar"
+                android:gravity="center_horizontal|center_vertical"
+                android:paddingEnd="10dp"
+
+                android:paddingStart="10dp"
+                android:textColor="@android:color/white"
+                android:textAllCaps="false"
+                android:textSize="12sp"
+                android:background="@drawable/btn_login"
+                android:layout_width="120dp"
+                android:layout_height="30dp"
+                android:layout_weight="1.0"/>
+
+
+        </RelativeLayout>
+    </RelativeLayout>
+    <ProgressBar
+        android:id="@+id/pgbDialog"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"/>
+</RelativeLayout>

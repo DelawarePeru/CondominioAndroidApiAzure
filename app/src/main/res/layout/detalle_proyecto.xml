@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/appbar"
+        android:fitsSystemWindows="true"
+        app:layout_scrollFlags="scroll|exitUntilCollapsed"
+
+        />
+<androidx.core.widget.NestedScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="60dp"
+    >
+<RelativeLayout
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <fragment
+        android:id="@+id/presentacion"
+        class="pe.com.condominioandroidapi.activity.detalle.fragment.presentacionFragment"
+        android:layout_width="match_parent"
+        android:layout_height="650dp"
+    />
+
+
+    <LinearLayout
+        android:id="@+id/first"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_weight="1"
+        android:background="@color/marcaPrimary"
+        android:layout_below="@+id/presentacion">
+        <View
+            android:id="@+id/view1"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginTop="20dp"
+            android:layout_weight="0.5"
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="20dp"
+            android:background="@color/marcaHeader"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="."
+            android:textSize="22sp">
+
+        </TextView>
+        <View
+            android:id="@+id/view"
+            android:layout_weight="0.5"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="40dp"
+            android:background="@color/marcaHeader"
+            />
+    </LinearLayout>
+
+
+    <fragment
+        android:id="@+id/slide"
+        class="pe.com.condominioandroidapi.activity.detalle.fragment.beneficioFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_below="@+id/first" />
+
+    <LinearLayout
+        android:id="@+id/second"
+        android:background="@color/marcaPrimary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_weight="1"
+
+        android:layout_below="@+id/slide">
+        <View
+            android:id="@+id/view3"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginTop="20dp"
+            android:layout_weight="0.5"
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="20dp"
+            android:background="@color/marcaHeader"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="."
+            android:textSize="22sp">
+
+        </TextView>
+        <View
+            android:id="@+id/view4"
+            android:layout_weight="0.5"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="40dp"
+            android:background="@color/marcaHeader"
+            />
+    </LinearLayout>
+    <fragment
+        android:id="@+id/lugares"
+        android:layout_below="@+id/second"
+        class="pe.com.condominioandroidapi.activity.detalle.fragment.lugarFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/thrid"
+        android:background="@color/marcaPrimary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_weight="1"
+        android:layout_below="@+id/lugares">
+        <View
+            android:id="@+id/view5"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginTop="20dp"
+            android:layout_weight="0.5"
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="20dp"
+            android:background="@color/marcaHeader"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="."
+            android:textSize="22sp">
+
+        </TextView>
+        <View
+            android:id="@+id/view6"
+            android:layout_weight="0.5"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="40dp"
+            android:background="@color/marcaHeader"
+            />
+    </LinearLayout>
+
+    <fragment
+        android:id="@+id/slideGaleria"
+        class="pe.com.condominioandroidapi.activity.detalle.fragment.galeriaFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+
+        android:layout_below="@+id/thrid"/>
+    <LinearLayout
+        android:id="@+id/fourth"
+        android:background="@color/marcaPrimary"
+        android:layout_below="@+id/slideGaleria"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_weight="1">
+        <View
+            android:id="@+id/view7"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginTop="20dp"
+            android:layout_weight="0.5"
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="20dp"
+            android:background="@color/marcaHeader"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="."
+            android:textSize="22sp">
+
+        </TextView>
+        <View
+            android:id="@+id/view8"
+            android:layout_weight="0.5"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="40dp"
+            android:background="@color/marcaHeader"
+            />
+    </LinearLayout>
+
+    <fragment
+        android:id="@+id/fgPlanos"
+        android:layout_below="@+id/fourth"
+        class="pe.com.condominioandroidapi.activity.detalle.fragment.planoFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+    <!--<RelativeLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="55dp"
+
+        >
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvdetalleProyecto"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </androidx.recyclerview.widget.RecyclerView>
+    </RelativeLayout>-->
+
+</RelativeLayout>
+</androidx.core.widget.NestedScrollView>
+
+    <!--<ProgressBar
+        android:id="@+id/pgbDialog"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/toolbar"
+        android:foregroundGravity="center_vertical||center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="visible"
+        />-->
+</androidx.constraintlayout.widget.ConstraintLayout>

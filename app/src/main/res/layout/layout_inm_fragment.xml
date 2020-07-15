@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include
+    android:id="@+id/toolbar"
+    layout="@layout/appbar"/>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingRight="15dp"
+        android:paddingLeft="15dp"
+        android:layout_gravity="center"
+        android:weightSum="5"
+        android:background="@color/marcaPrimary"
+        >
+
+        <LinearLayout
+            android:id="@+id/llTitutlo"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:paddingTop="40dp"
+            android:layout_marginTop="20dp"
+            android:gravity="center_vertical|center_horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:gravity="left">
+
+                <ImageView
+                    android:id="@+id/logo_proyecto"
+                    android:layout_width="150dp"
+                    android:layout_height="100dp">
+
+                </ImageView>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:gravity="right">
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/tvCodigo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="A - 500"
+                        android:textColor="#FFFFFF"
+                        android:textSize="18dp"/>
+                    <!--"#FFFFFF"-->
+
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/llDiv"
+            android:weightSum="2"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingTop="20dp">
+
+            <LinearLayout
+                android:id="@+id/rlCondominio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/border_corners_layout_info"
+                android:orientation="vertical"
+                android:layout_marginRight="8dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="22dp">
+                <TextView
+                    android:id="@+id/tvInfo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="   Información  "
+                    android:textSize="14dp"
+                    android:textStyle="bold">
+
+                </TextView>
+
+                <TextView
+                    android:id="@+id/tvCondominio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tvInfo"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginBottom="9dp"
+                    android:text="Condominio"
+                    android:textSize="12dp">
+
+                </TextView>
+
+                <ImageView
+                    android:id="@+id/logo"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_below="@+id/tvCondominio"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@drawable/ic_condominio">
+
+                </ImageView>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/rlDepartamento"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/border_corners_layout_info"
+                android:orientation="vertical"
+                android:layout_toRightOf="@+id/rlCondominio"
+                android:layout_marginLeft="8dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="22dp">
+                <TextView
+                    android:id="@+id/tvDocumentacion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Documentación"
+                    android:textStyle="bold"
+                    android:textSize="14dp"
+                    android:layout_gravity="center_horizontal"
+                    >
+
+                </TextView>
+                <TextView
+                    android:id="@+id/tvDepa"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Departamento"
+                    android:textSize="12dp"
+                    android:layout_marginBottom="9dp"
+                    android:layout_gravity="center_horizontal"
+
+                    android:layout_below="@+id/tvDocumentacion">
+
+                </TextView>
+                <ImageView
+                    android:id="@+id/icon_inm"
+                    android:layout_width="60dp"
+                    android:background="@drawable/ic_departamento"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_height="60dp"
+                    android:layout_below="@+id/tvDepa">
+
+                </ImageView>
+
+            </LinearLayout>
+        </LinearLayout>
+</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

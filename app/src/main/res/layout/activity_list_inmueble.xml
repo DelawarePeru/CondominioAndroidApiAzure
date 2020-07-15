@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingRight="15dp"
+    android:paddingLeft="15dp"
+    android:background="@color/marcaPrimary"
+>
+    <RelativeLayout
+        android:id="@+id/rlSearch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="50dp"
+            android:background="@drawable/logo"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="15dp"
+            android:layout_height="50dp">
+
+        </ImageView>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:weightSum="1"
+            android:layout_below="@+id/logo"
+            android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/etSearch"
+            android:textAllCaps="false"
+            android:hint="Buscar en propiedades"
+            android:drawableStart="@drawable/ic_icon_search"
+            android:drawablePadding="5dp"
+            android:imeOptions="actionSearch"
+            android:layout_width="match_parent"
+            android:maxLength="30"
+            android:paddingTop="2dp"
+            android:textColorHint="#979797"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:layout_height="40dp"
+            android:textSize="15sp"
+            android:layout_weight="0.8"
+            android:textColor="@color/marcaTitle"
+            android:background="@drawable/edittext_border"/>
+        <ImageView
+            android:id="@+id/ivFiltro"
+            android:layout_weight="0.1"
+            android:paddingLeft="2sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_filter"/>
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rlDatosInmueble"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/rlSearch"
+        android:paddingTop="22dp"
+        android:paddingBottom="22dp">
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvResultadosInmueble"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layerType="software"
+            />
+
+
+    </RelativeLayout>
+
+    <ProgressBar
+        android:id="@+id/pgbCardView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="gone" />
+
+</RelativeLayout>

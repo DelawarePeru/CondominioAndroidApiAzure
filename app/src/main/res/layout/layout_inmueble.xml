@@ -1,0 +1,17 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.Inmueble.ListaInmueblesFragment">
+
+
+    <fragment
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:name="pe.com.condominioandroidapi.activity.layoutInmueble.layoutInmNOUSE"
+        android:id="@+id/fragment"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        class="pe.com.condominioandroidapi.activity.layoutInmueble.layoutInmNOUSE"
+        tools:layout="@layout/layout_inm_fragment" />
+</RelativeLayout>

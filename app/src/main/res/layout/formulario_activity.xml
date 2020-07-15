@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:excludeFromRecents="true"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:background="@drawable/border_pop_up"
+    android:layout_margin="2dp">
+    <RelativeLayout
+        android:id="@+id/informacion"
+        android:layout_width="match_parent"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:paddingBottom="5dp"
+        android:paddingTop="20dp"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/formTi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:text="Solicitar más información"/>
+
+        <TextView
+            android:id="@+id/tvNombre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:paddingBottom="5dp"
+            android:layout_below="@+id/formTi"
+            android:text="Nombre"
+            android:textColor="#999"
+            android:textSize="14sp"/>
+
+        <EditText
+            android:id="@+id/etNombre"
+            android:textAllCaps="false"
+            android:hint="Nombre"
+
+            android:imeOptions="actionDone"
+            android:layout_width="match_parent"
+            android:maxLength="30"
+            android:textColorHint="@color/marcaHeader"
+            android:paddingStart="10dp"
+            android:layout_below="@+id/tvNombre"
+            android:paddingEnd="10dp"
+            android:layout_height="40dp"
+            android:layout_marginBottom="15dp"
+            android:textSize="13sp"
+            android:textColor="@color/marcaTitle"
+            android:background="@drawable/edittext_border_setting"/>
+
+        <TextView
+            android:id="@+id/tvCorreo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:paddingBottom="5dp"
+            android:layout_below="@+id/etNombre"
+            android:text="Correo"
+            android:textColor="#999"
+            android:textSize="14sp"/>
+
+        <EditText
+            android:id="@+id/etCorreo"
+            android:textAllCaps="false"
+            android:hint="example@hotmail.com"
+            android:imeOptions="actionDone"
+            android:layout_width="match_parent"
+            android:maxLength="30"
+            android:textColorHint="@color/marcaHeader"
+            android:paddingStart="10dp"
+            android:layout_below="@+id/tvCorreo"
+            android:paddingEnd="10dp"
+            android:layout_height="40dp"
+            android:layout_marginBottom="15dp"
+            android:textSize="13sp"
+            android:textColor="@color/marcaTitle"
+            android:background="@drawable/edittext_border_setting"/>
+
+        <TextView
+            android:id="@+id/tvTelefono"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:paddingBottom="5dp"
+            android:layout_below="@+id/etCorreo"
+            android:text="Teléfono"
+            android:textColor="#999"
+            android:textSize="14sp"/>
+
+        <EditText
+            android:id="@+id/etTelefono"
+            android:textAllCaps="false"
+            android:hint="(C. Área)+(Tel) Ó (Número de celular) "
+            android:imeOptions="actionDone"
+            android:layout_width="match_parent"
+            android:maxLength="9"
+            android:inputType="number"
+            android:textColorHint="@color/marcaHeader"
+            android:paddingStart="10dp"
+            android:layout_below="@+id/tvTelefono"
+            android:paddingEnd="10dp"
+            android:layout_height="40dp"
+            android:layout_marginBottom="15dp"
+            android:textSize="13sp"
+            android:textColor="@color/marcaTitle"
+            android:background="@drawable/edittext_border_setting"/>
+
+
+        <TextView
+            android:id="@+id/tvMessage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:paddingBottom="5dp"
+            android:layout_below="@+id/etTelefono"
+            android:text="Mensaje"
+            android:textColor="#999"
+            android:textSize="14sp"/>
+
+        <EditText
+            android:id="@+id/etMessage"
+            android:textAllCaps="false"
+            android:hint="Mensaje"
+            android:imeOptions="actionDone"
+            android:layout_width="match_parent"
+            android:lines="4"
+            android:gravity="top|left"
+            android:maxLines="5"
+            android:inputType="textMultiLine"
+            android:textColorHint="@color/marcaHeader"
+            android:paddingStart="10dp"
+            android:layout_below="@+id/tvMessage"
+            android:paddingEnd="10dp"
+            android:paddingTop="10dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:textSize="13sp"
+            android:textColor="@color/marcaTitle"
+            android:background="@drawable/edittext_border_setting"/>
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/recaptcha"
+            android:id="@+id/captcha"
+            android:layout_below="@+id/etMessage"
+            android:layout_centerHorizontal="true"
+            />
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/captcha"
+            android:layout_centerHorizontal="true"
+            android:text="I'm not robot"
+            android:textSize="15sp"
+            android:shadowColor="@color/btnLogin"
+            android:id="@+id/cbCaptcha"
+            android:layout_marginTop="10sp"
+            android:layout_marginBottom="20sp"
+            android:textColor="@color/marcaTitle"
+            />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rlDetalleItem"
+        android:layout_below="@+id/informacion"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:paddingBottom="0dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:layout_marginBottom="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+
+            >
+            <Button
+                android:id="@+id/btnEnviarFormulario"
+                android:text="Enviar"
+                android:gravity="center_horizontal|center_vertical"
+                android:textColor="@android:color/white"
+                android:textAllCaps="false"
+                android:textSize="16sp"
+                android:background="@drawable/btn_guardar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+              />
+
+        </RelativeLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

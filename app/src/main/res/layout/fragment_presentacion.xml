@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_weight="5"
+    tools:context=".activity.detalle.fragment.presentacionFragment">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:weightSum="5"
+        android:background="@color/marcaPrimary"
+        >
+
+        <LinearLayout
+            android:id="@+id/rlProyecto"
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical|center_horizontal"
+            android:layout_weight="4">
+            <ImageView
+                android:id="@+id/ivlogoProyecto"
+                android:layout_width="match_parent"
+                android:layout_marginLeft="50sp"
+                android:layout_marginRight="50sp"
+                android:layout_height="match_parent">
+             <!--   android:background="@drawable/logo_pequeno"-->
+            </ImageView>
+        </LinearLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+            <ImageView
+                android:id="@+id/ivPerfilProyecto"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:scaleType="fitCenter"
+                />
+
+            <TextView
+                android:id="@+id/tvOver"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:layout_marginLeft="30sp"
+                android:layout_marginRight="30sp"
+                android:background="#B3000000"
+                android:gravity="center"
+                android:lineSpacingExtra="10px"
+                android:paddingLeft="10sp"
+                android:paddingTop="15sp"
+                android:paddingRight="10sp"
+                android:paddingBottom="15sp"
+                android:textColor="#fdfcfc"
+                android:textSize="14dp" />
+        </FrameLayout >
+
+    </LinearLayout>
+    <ProgressBar
+        android:id="@+id/pgbDialog"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"/>
+
+</FrameLayout>

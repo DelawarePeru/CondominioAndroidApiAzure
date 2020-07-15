@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="appCompatSpinnerStyle" parent="Widget.AppCompat.Light.DropDownItem.Spinner">
+        <item name="android:textColor">@color/marcaHeader</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:radius">10sp</item>
+        <item name="android:colorBackground">@color/marcaPrimary</item>
+        <item name="android:colorAccent">@color/marcaTitle</item>
+        <item name="android:titleTextColor">@color/marcaTitle</item>
+    </style>
+</resources>

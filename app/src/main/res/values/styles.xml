@@ -1,11 +1,59 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorAccent">@color/btnLogin</item>
+    </style>
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="Theme.AppCompat.Translucent" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+    </style>
+    <style name="TabLayoutTextSize" parent="TextAppearance.Design.Tab">
+        <item name="android:textSize">10sp</item>
+    </style>
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="actionMenuTextColor">@color/btnLogin</item>
+        <item name="android:homeAsUpIndicator">@drawable/ic_back</item>
+    </style>
+    <!-- <style name="Base.Widget.Design.TabLayout" parent="android:Widget">
+       <item name="tabMaxWidth">20dp</item>
+        <item name="tabSelectedTextColor">?attr/colorAccent</item>
+        <item name="tabIndicatorHeight">2dp</item>
+        <item name="tabPaddingStart">12dp</item>
+        <item name="tabPaddingEnd">12dp</item>
+        <item name="tabBackground">?attr/selectableItemBackground</item>
+        <item name="tabTextAppearance">@style/TextAppearance.Design.Tab</item>
+        <item name="tabIndicatorColor">@color/marcaRed</item>
+    </style>-->
+
+    <style name="FacebookLoginButton">
+        <item name="android:textSize">12sp</item>
+        <item name="android:background">@drawable/ic_vincular</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:layout_marginBottom">10dp</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+    </style>
+    <style name="appCompatSpinnerStyle" parent="Widget.AppCompat.Light.DropDownItem.Spinner">
+        <item name="android:textColor">@color/marcaHeader</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:radius">10sp</item>
+
+    </style>
+    <style name="select" parent="Widget.AppCompat.Light.DropDownItem.Spinner">
+        <item name="android:textColor">@color/marcaTitle</item>
+
+
     </style>
 
 </resources>
