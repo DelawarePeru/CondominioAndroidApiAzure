@@ -296,17 +296,15 @@
             <!-- style="@style/FacebookLoginButton"
 -->
             <ImageView
-            android:id="@+id/ivFacebook"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:onClick="onClickFacebookButton"
-            android:textAllCaps="false"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="15dp"
-            android:background="@drawable/ic_vincular">
+                android:id="@+id/ivFacebook"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
 
-        </ImageView>
+                android:textAllCaps="false"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/ic_vincular"
+                android:contentDescription="TODO" />
 
         <TextView
             android:id="@+id/tvGmail"
