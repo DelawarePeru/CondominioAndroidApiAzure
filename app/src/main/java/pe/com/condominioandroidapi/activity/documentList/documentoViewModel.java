@@ -2,9 +2,12 @@ package pe.com.condominioandroidapi.activity.documentList;
 
 import android.app.Application;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.view.View;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Observer;
 
@@ -41,6 +44,20 @@ public class documentoViewModel extends BaseViewModel {
                 onRetrieveDataFinish();
 
                 documentoMutableLiveData.setValue(pro);
+            }
+        });
+        datamodel.getErrorCodeLiveData().observeForever(new Observer<Integer>() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
+            @Override
+            public void onChanged(@Nullable Integer errorCode) {
+                messageResult.setValue(getMessageByErrorCode(errorCode));
+            }
+        });
+        datamodel.getErrorMessageLiveData().observeForever(new Observer<String>() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
+            @Override
+            public void onChanged(@Nullable String s) {
+                messageResult.setValue(s);
             }
         });
     }

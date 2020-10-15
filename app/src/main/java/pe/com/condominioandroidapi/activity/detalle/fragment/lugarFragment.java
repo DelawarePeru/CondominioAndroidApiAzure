@@ -157,19 +157,21 @@ public class lugarFragment extends BaseFragment implements  OnMapReadyCallback  
     }
 
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void onMapReady(GoogleMap googleMap) {
-        Log.d("coordenadas",coordX.toString());
-        Log.d("coordenadas", coordY.toString());
+        String coordenadaX = Constant.get(Constant.COORDENADA_X);
+        String coodernadaY = Constant.get(Constant.COORDENADA_Y);
+        Log.d("coordenadaX",coordenadaX);
+        Log.d("coordenadaX", coodernadaY);
 
-        LatLng marker = new LatLng(-12.129709, -77.0093276);
+        LatLng marker = new LatLng(Double.valueOf(coordenadaX), Double.valueOf(coodernadaY));
 
         googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(marker, 20));
         googleMap.animateCamera(CameraUpdateFactory.zoomIn());
         // Zoom out to zoom level 10, animating with a duration of 2 seconds.
         googleMap.animateCamera(CameraUpdateFactory.zoomTo(16), 2000, null);
-        googleMap.addMarker(new MarkerOptions().title("Testing").position(new LatLng(-12.129709, -77.0093276)));
-        googleMap.addMarker(new MarkerOptions().title("Hello Google Maps!").position(marker));
+        googleMap.addMarker(new MarkerOptions().title("Hello!").position(marker));
 
         if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling

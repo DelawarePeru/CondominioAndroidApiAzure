@@ -21,70 +21,70 @@ import pe.com.condominioandroidapi.util.basecomponent.BaseViewModel;
 
 public class ListaInmueblesViewModel extends BaseViewModel {
 
-    private InmuebleDatamodel datamodel;
+  private InmuebleDatamodel datamodel;
 
-    private MutableLiveData<List<InmuebleListResponse>> inmListMutableLiveData;
-    private MutableLiveData<Integer> visibilityValueMutableLiveData;
+  private MutableLiveData<List<InmuebleListResponse>> inmListMutableLiveData;
+  private MutableLiveData<Integer> visibilityValueMutableLiveData;
 
-    public ListaInmueblesViewModel(@NonNull Application application) {
-        super(application);
-        datamodel = new InmuebleDatamodel();
-        visibilityValueMutableLiveData = new MutableLiveData<>();
-        inmListMutableLiveData = new MutableLiveData<>();
-        setupObservers();
-    }
-    @Override
-    public void setupObservers() {
-        datamodel.getInmuListMutableLiveData().observeForever(new Observer<List<InmuebleListResponse>>() {
-        @Override
-        public void onChanged(List<InmuebleListResponse> pro) {
-            onRetrieveDataFinish();
+  public ListaInmueblesViewModel(@NonNull Application application) {
+    super(application);
+    datamodel = new InmuebleDatamodel();
+    visibilityValueMutableLiveData = new MutableLiveData<>();
+    inmListMutableLiveData = new MutableLiveData<>();
+    setupObservers();
+  }
+  @Override
+  public void setupObservers() {
+    datamodel.getInmuListMutableLiveData().observeForever(new Observer<List<InmuebleListResponse>>() {
+      @Override
+      public void onChanged(List<InmuebleListResponse> pro) {
+        onRetrieveDataFinish();
 
-            // 2. Al recibir la lista desde el servicio escondemos el ProgressBar
-            visibilityValueMutableLiveData.setValue(View.GONE);
-            inmListMutableLiveData.setValue(pro);
-        }
+        // 2. Al recibir la lista desde el servicio escondemos el ProgressBar
+        visibilityValueMutableLiveData.setValue(View.GONE);
+        inmListMutableLiveData.setValue(pro);
+      }
     });
+  }
+
+  MutableLiveData<Integer> getVisibilityValueMutableLiveData() {
+    return visibilityValueMutableLiveData;
+  }
+  MutableLiveData<List<InmuebleListResponse>> getInmuListMutableLiveData() {
+    return inmListMutableLiveData;
+  }
+
+  void requestListInmu(Integer idUser , Integer idProyecto) {
+    onRetrieveData();
+    new ValidateRequestPrincipalTask(this, idUser,  idProyecto).execute();
+  }
+
+  private static class ValidateRequestPrincipalTask extends AsyncTask<Void, Void, Boolean> {
+    ListaInmueblesViewModel viewModel;
+    Integer idUser;
+    Integer idProyecto;
+
+    ValidateRequestPrincipalTask(ListaInmueblesViewModel viewModel, Integer idUser,  Integer idProyecto) {
+      this.viewModel = viewModel;
+      this.idUser = idUser;
+      this.idProyecto= idProyecto;
     }
 
-    MutableLiveData<Integer> getVisibilityValueMutableLiveData() {
-        return visibilityValueMutableLiveData;
-    }
-    MutableLiveData<List<InmuebleListResponse>> getInmuListMutableLiveData() {
-        return inmListMutableLiveData;
+    @Override
+    protected Boolean doInBackground(Void... voids) {
+      return Helper.isOnline();
     }
 
-    void requestListInmu(Integer idUser , Integer idProyecto) {
-        onRetrieveData();
-        new ValidateRequestPrincipalTask(this, idUser,  idProyecto).execute();
+    @Override
+    protected void onPostExecute(Boolean aBoolean) {
+      super.onPostExecute(aBoolean);
+      if (aBoolean)
+        viewModel.datamodel.requestListInmu(idUser, idProyecto);
+
+      else {
+        viewModel.messageResult.setValue("No tienes acceso a internet");
+        viewModel.onRetrieveDataFinish();
+      }
     }
-
-    private static class ValidateRequestPrincipalTask extends AsyncTask<Void, Void, Boolean> {
-        ListaInmueblesViewModel viewModel;
-        Integer idUser;
-        Integer idProyecto;
-
-        ValidateRequestPrincipalTask(ListaInmueblesViewModel viewModel, Integer idUser,  Integer idProyecto) {
-            this.viewModel = viewModel;
-            this.idUser = idUser;
-            this.idProyecto= idProyecto;
-        }
-
-        @Override
-        protected Boolean doInBackground(Void... voids) {
-            return Helper.isOnline();
-        }
-
-        @Override
-        protected void onPostExecute(Boolean aBoolean) {
-            super.onPostExecute(aBoolean);
-            if (aBoolean)
-                viewModel.datamodel.requestListInmu(idUser, idProyecto);
-
-            else {
-                viewModel.messageResult.setValue("No tienes acceso a internet");
-                viewModel.onRetrieveDataFinish();
-            }
-        }
-    }
+  }
 }

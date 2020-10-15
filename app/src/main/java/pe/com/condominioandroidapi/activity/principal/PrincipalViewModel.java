@@ -3,11 +3,13 @@ package pe.com.condominioandroidapi.activity.principal;
 import android.app.Application;
 
 import android.os.AsyncTask;
+import android.os.Build;
 import android.view.View;
 
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Observer;
 
@@ -19,6 +21,7 @@ import pe.com.condominioandroidapi.datamodel.PostDatamodel;
 import pe.com.condominioandroidapi.datamodel.PrincipalDataModel;
 import pe.com.condominioandroidapi.entities.InmuebleResponse;
 import pe.com.condominioandroidapi.entities.ProyectoResponse;
+import pe.com.condominioandroidapi.util.Constant;
 import pe.com.condominioandroidapi.util.Helper;
 import pe.com.condominioandroidapi.util.basecomponent.BaseViewModel;
 
@@ -52,6 +55,21 @@ public class PrincipalViewModel extends BaseViewModel {
                 // 2. Al recibir la lista desde el servicio escondemos el ProgressBar
                 visibilityValueMutableLiveData.setValue(View.GONE);
                 proListMutableLiveData.setValue(pro);
+            }
+        });
+
+        datamodel.getErrorCodeLiveData().observeForever(new Observer<Integer>() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
+            @Override
+            public void onChanged(@Nullable Integer errorCode) {
+                messageResult.setValue(getMessageByErrorCode(errorCode));
+            }
+        });
+        datamodel.getErrorMessageLiveData().observeForever(new Observer<String>() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
+            @Override
+            public void onChanged(@Nullable String s) {
+                messageResult.setValue(s);
             }
         });
     }

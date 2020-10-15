@@ -5,13 +5,13 @@
     tools:context=".activity.Inmueble.ListaInmueblesFragment">
 
 
-    <fragment
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:name="pe.com.condominioandroidapi.activity.layoutInmueble.layoutInmNOUSE"
-        android:id="@+id/fragment"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        class="pe.com.condominioandroidapi.activity.layoutInmueble.layoutInmNOUSE"
-        tools:layout="@layout/layout_inm_fragment" />
+  <fragment
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:name="pe.com.condominioandroidapi.activity.layoutInmueble.layoutInmNOUSE"
+      android:id="@+id/fragment"
+      android:layout_alignParentTop="true"
+      android:layout_centerHorizontal="true"
+      class="pe.com.condominioandroidapi.activity.layoutInmueble.layoutInmNOUSE"
+      tools:layout="@layout/layout_inm_fragment" />
 </RelativeLayout>

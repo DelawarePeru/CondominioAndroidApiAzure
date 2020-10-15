@@ -39,6 +39,7 @@ import pe.com.condominioandroidapi.activity.layoutInmueble.layoutInmueble;
 import pe.com.condominioandroidapi.activity.principal.adapter.PrincipalAdapter;
 import pe.com.condominioandroidapi.activity.principal.listener.DetalleResultadosListener;
 import pe.com.condominioandroidapi.activity.principal.listener.ResultadosListener;
+import pe.com.condominioandroidapi.activity.vinculacion.VinculacionActivity;
 import pe.com.condominioandroidapi.entities.InmuebleResponse;
 import pe.com.condominioandroidapi.entities.ProyectoResponse;
 import pe.com.condominioandroidapi.entities.UserResponse;
@@ -73,7 +74,6 @@ public class PrincipalFragment extends BaseFragment implements ResultadosListene
         getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
         viewModel= ViewModelProviders.of(this).get(PrincipalViewModel.class);
         initializeObservers();
-        ivFiltro.setVisibility(View.GONE);
         etSearch.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -102,8 +102,8 @@ public class PrincipalFragment extends BaseFragment implements ResultadosListene
         for( InmuebleResponse item: data)
         {
             if(item.getNombreDistrito().toLowerCase().contains(word.toLowerCase())
-            || item.getNombreProyecto().toLowerCase().contains(word.toLowerCase())
-            || item.getRazonSocial().toLowerCase().contains(word.toLowerCase()))
+                    || item.getNombreProyecto().toLowerCase().contains(word.toLowerCase())
+                    || item.getRazonSocial().toLowerCase().contains(word.toLowerCase()))
             {
                 filter.add(item);
             }
@@ -131,12 +131,12 @@ public class PrincipalFragment extends BaseFragment implements ResultadosListene
 
     @Override
     public void initializeObservers() {
-       /* principalViewModel.getMessage().observe(this, new Observer<String>() {
+        viewModel.getMessage().observe(this, new Observer<String>() {
             @Override
             public void onChanged(@Nullable String message) {
                 showMessage(message);
             }
-        });
+        });/*
         principalViewModel.getPgbVisibility().observe(this, new Observer<Integer>() {
             @Override
             public void onChanged(@Nullable Integer value) {
@@ -171,24 +171,24 @@ public class PrincipalFragment extends BaseFragment implements ResultadosListene
             }
         });
     }
-       /* principalViewModel.getDivisionesResult().observeForever(new Observer<List<DivisionResponse>>() {
-            @Override
-            public void onChanged(@Nullable List<DivisionResponse> divisiones) {
-                setDataToDivisionSpinner(divisiones);
-            }
-        });
-        principalViewModel.getEmpresasResult().observeForever(new Observer<List<EmpresaResponse>>() {
-            @Override
-            public void onChanged(@Nullable List<EmpresaResponse> empresas) {
-                setDataToEmpresasSpinner(empresas);
-            }
-        });
+    /* principalViewModel.getDivisionesResult().observeForever(new Observer<List<DivisionResponse>>() {
+         @Override
+         public void onChanged(@Nullable List<DivisionResponse> divisiones) {
+             setDataToDivisionSpinner(divisiones);
+         }
+     });
+     principalViewModel.getEmpresasResult().observeForever(new Observer<List<EmpresaResponse>>() {
+         @Override
+         public void onChanged(@Nullable List<EmpresaResponse> empresas) {
+             setDataToEmpresasSpinner(empresas);
+         }
+     });
 
-    }*/
+ }*/
     public void setupViews(){
         ButterKnife.bind(this.getActivity());
         rvResultadosInmueble.setLayoutManager(new LinearLayoutManager(this.getActivity()));
-       rvResultadosInmueble.setAdapter(new PrincipalAdapter(new ArrayList<InmuebleResponse>(), this));
+        rvResultadosInmueble.setAdapter(new PrincipalAdapter(new ArrayList<InmuebleResponse>(), this));
 
     }
 
@@ -198,11 +198,11 @@ public class PrincipalFragment extends BaseFragment implements ResultadosListene
         Log.d("seleccione" , "seleccione" );
 
 
-            Intent intent = new Intent(getContext(), ListaInmueblesFragment.class)
-                    .putExtra(Constant.KEY_USER_DATA, loginResponse)
-                    .putExtra(Constant.ID_PROYECTO, String.valueOf(dato.getIdProyecto()))
-                    .putExtra("action", action);
-            startActivity(intent);
+        Intent intent = new Intent(getContext(), ListaInmueblesFragment.class)
+                .putExtra(Constant.KEY_USER_DATA, loginResponse)
+                .putExtra(Constant.ID_PROYECTO, String.valueOf(dato.getIdProyecto()))
+                .putExtra("action", action);
+        startActivity(intent);
 
     }
 
@@ -214,6 +214,13 @@ public class PrincipalFragment extends BaseFragment implements ResultadosListene
 
     private void showMessage(String m) {
         Snackbar.make(Objects.requireNonNull(getView()), m, Snackbar.LENGTH_LONG).show();
+    }
+    @OnClick(R.id.ivFiltro)
+    public void onClickFiltro()
+    {
+        Intent intent = new Intent(getActivity(), VinculacionActivity.class);
+
+        startActivity(intent);
     }
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override

@@ -5,22 +5,22 @@
     android:layout_height="wrap_content"
     android:layout_weight="5"
     tools:context=".activity.detalle.fragment.lugarFragment">
-            <LinearLayout
-            xmlns:android="http://schemas.android.com/apk/res/android"
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="5"
+        android:background="@color/marcaPrimary">
+
+        <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:weightSum="5"
-            android:background="@color/marcaPrimary">
-
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="15sp"
-                android:layout_marginRight="15sp"
-                android:layout_marginBottom="15sp">
-                <TextView
+            android:layout_marginLeft="15sp"
+            android:layout_marginRight="15sp"
+            android:layout_marginBottom="15sp">
+            <TextView
                 android:id="@+id/tvUbicacion"
                 android:text="Ubicación"
                 android:layout_width="match_parent"
@@ -30,93 +30,93 @@
                 android:textStyle="bold"
                 android:gravity="center">
             </TextView>
-                <TextView
-                    android:id="@+id/tvText"
-                    android:text="@string/texto_detalle"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:textColor="@color/marcaTitle"
-                    android:textSize="15sp"
-                    android:gravity="center">
-                </TextView>
-            </LinearLayout>
-                <com.google.android.gms.maps.MapView
-                    xmlns:android="http://schemas.android.com/apk/res/android"
-                    xmlns:tools="http://schemas.android.com/tools"
-                    android:layout_width="match_parent"
-                    android:layout_height="200dp"
-                    android:id="@+id/map"
-                    tools:context=".lugarFragment"
-                    android:name="com.google.android.gms.maps.SupportMapFragment" />
+            <TextView
+                android:id="@+id/tvText"
+                android:text="@string/texto_detalle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textColor="@color/marcaTitle"
+                android:textSize="15sp"
+                android:gravity="center">
+            </TextView>
+        </LinearLayout>
+        <com.google.android.gms.maps.MapView
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:id="@+id/map"
+            tools:context=".lugarFragment"
+            android:name="com.google.android.gms.maps.SupportMapFragment" />
 
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:weightSum="2"
-                    android:layout_marginLeft="15sp"
-                    android:layout_marginRight="15sp"
-                    >
-                    <ImageButton
-                    android:id="@+id/btn1"
-                    android:minHeight="20sp"
-                    android:layout_weight="1"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/ic_restaurantes"
-                    android:background="@drawable/corner_left"
-                    android:paddingTop="2sp"
-                    android:paddingBottom="2sp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="22sp"
-                    /><!--22sp-->
-                    <ImageButton
-                    android:id="@+id/btn2"
-                    android:paddingTop="2sp"
-                    android:paddingBottom="2sp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="22sp"
-                    android:src="@drawable/ic_museo"
-                    android:scaleType="fitCenter"
-                    android:layout_weight="1"
-                    android:minHeight="20sp"
-                    android:background="@drawable/corner_right"/>
-                    <ImageButton
-                    android:id="@+id/btn3"
-                    android:paddingTop="2sp"
-                    android:paddingBottom="2sp"
-                    android:layout_width="22sp"
-                    android:layout_height="22sp"
-                    android:src="@drawable/ic_markets"
-                    android:scaleType="fitCenter"
-                    android:minHeight="20sp"
-                    android:visibility="gone"
-                    android:background="@color/colorRipple"
-                    android:layout_weight="1"     />
-                    <ImageButton
-                    android:id="@+id/btn4"
-                    android:paddingTop="2sp"
-                    android:paddingBottom="2sp"
-                    android:layout_width="22sp"
-                    android:layout_height="22sp"
-                    android:visibility="gone"
-                    android:src="@drawable/ic_cultura"
-                    android:scaleType="fitCenter"
-                    android:background="@color/colorRipple"
-                    android:layout_weight="1"     />
-                    <ImageButton
-                    android:id="@+id/btn5"
-                    android:minHeight="20sp"
-                    android:background="@drawable/corner_right"
-                    android:paddingTop="2sp"
-                    android:visibility="gone"
-                    android:paddingBottom="2sp"
-                    android:layout_width="22sp"
-                    android:layout_height="22sp"
-                    android:src="@drawable/ic_educacion"
-                    android:scaleType="fitCenter"
-                    android:layout_weight="1" />
-                </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:weightSum="2"
+            android:layout_marginLeft="15sp"
+            android:layout_marginRight="15sp"
+            >
+            <ImageButton
+                android:id="@+id/btn1"
+                android:minHeight="20sp"
+                android:layout_weight="1"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_restaurantes"
+                android:background="@drawable/corner_left"
+                android:paddingTop="2sp"
+                android:paddingBottom="2sp"
+                android:layout_width="wrap_content"
+                android:layout_height="22sp"
+                /><!--22sp-->
+            <ImageButton
+                android:id="@+id/btn2"
+                android:paddingTop="2sp"
+                android:paddingBottom="2sp"
+                android:layout_width="wrap_content"
+                android:layout_height="22sp"
+                android:src="@drawable/ic_museo"
+                android:scaleType="fitCenter"
+                android:layout_weight="1"
+                android:minHeight="20sp"
+                android:background="@drawable/corner_right"/>
+            <ImageButton
+                android:id="@+id/btn3"
+                android:paddingTop="2sp"
+                android:paddingBottom="2sp"
+                android:layout_width="22sp"
+                android:layout_height="22sp"
+                android:src="@drawable/ic_markets"
+                android:scaleType="fitCenter"
+                android:minHeight="20sp"
+                android:visibility="gone"
+                android:background="@color/colorRipple"
+                android:layout_weight="1"     />
+            <ImageButton
+                android:id="@+id/btn4"
+                android:paddingTop="2sp"
+                android:paddingBottom="2sp"
+                android:layout_width="22sp"
+                android:layout_height="22sp"
+                android:visibility="gone"
+                android:src="@drawable/ic_cultura"
+                android:scaleType="fitCenter"
+                android:background="@color/colorRipple"
+                android:layout_weight="1"     />
+            <ImageButton
+                android:id="@+id/btn5"
+                android:minHeight="20sp"
+                android:background="@drawable/corner_right"
+                android:paddingTop="2sp"
+                android:visibility="gone"
+                android:paddingBottom="2sp"
+                android:layout_width="22sp"
+                android:layout_height="22sp"
+                android:src="@drawable/ic_educacion"
+                android:scaleType="fitCenter"
+                android:layout_weight="1" />
+        </LinearLayout>
 
-            </LinearLayout>
+    </LinearLayout>
 </FrameLayout>

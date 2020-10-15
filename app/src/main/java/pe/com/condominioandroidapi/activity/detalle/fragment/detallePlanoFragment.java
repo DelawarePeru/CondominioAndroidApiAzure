@@ -121,7 +121,7 @@ public class detallePlanoFragment extends BaseFragment {
             txtDeposito.setText(detalle.get(0).getPrecioDeposito().toString());
             txtPrecioTotal.setText(detalle.get(0).getPrecioTotal().toString());
             lydetallePlano.setVisibility(View.VISIBLE);
-           // ivPlano.setScaleType(ImageView.ScaleType.CENTER_CROP);
+            // ivPlano.setScaleType(ImageView.ScaleType.CENTER_CROP);
 
         });
 

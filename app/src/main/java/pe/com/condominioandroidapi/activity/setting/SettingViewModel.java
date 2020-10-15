@@ -73,16 +73,16 @@ public class SettingViewModel extends BaseViewModel {
     }
 
 
-    void requestAvatar(Integer idUser) {
+    void requestAvatar(String idUser) {
         onRetrieveData();
         new SettingViewModel.ValidateRequestPrincipalTask(this, idUser).execute();
     }
 
     private static class ValidateRequestPrincipalTask extends AsyncTask<Void, Void, Boolean> {
         SettingViewModel viewModel;
-        Integer idUser;
+        String idUser;
 
-        ValidateRequestPrincipalTask(SettingViewModel viewModel, Integer idUser) {
+        ValidateRequestPrincipalTask(SettingViewModel viewModel, String idUser) {
             this.viewModel = viewModel;
             this.idUser = idUser;
         }
@@ -166,7 +166,7 @@ public class SettingViewModel extends BaseViewModel {
         protected void onPostExecute(Boolean aBoolean) {
             super.onPostExecute(aBoolean);
             if (aBoolean)
-                viewModel.datamodel.requestSwitch(2);
+                viewModel.datamodel.requestSwitch(idUser);
 
             else {
                 viewModel.messageResult.setValue("No tienes acceso a internet");
@@ -202,7 +202,7 @@ public class SettingViewModel extends BaseViewModel {
         protected void onPostExecute(Boolean aBoolean) {
             super.onPostExecute(aBoolean);
             if (aBoolean)
-                viewModel.datamodel.requestUpdateSwitch(2, tipo,estado);
+                viewModel.datamodel.requestUpdateSwitch(idUser, tipo,estado);
 
             else {
                 viewModel.messageResult.setValue("No tienes acceso a internet");

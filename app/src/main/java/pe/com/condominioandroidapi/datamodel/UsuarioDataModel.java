@@ -48,16 +48,18 @@ public class UsuarioDataModel {
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
-    public void requestAvatar(Integer idPersona) {
+    public void requestAvatar(String idPersona) {
         PostService service = ServiceGenerator
                 .createService(PostService.class, Constant.get(Constant.KEY_ACCESS_TOKEN));
-        Call<PostResponse<UsuarioResponse>> call = service.avatar(builJson(2));
+        Call<PostResponse<UsuarioResponse>> call = service.avatar(builJson(idPersona));
 
         call.enqueue(new Callback<PostResponse<UsuarioResponse>>() {
             @Override
             public void onResponse(Call<PostResponse<UsuarioResponse>> call, Response<PostResponse<UsuarioResponse>> response) {
                 Log.d("response" , response.body().getData().toString());
                 Constant.set(Constant.NOMBRE,response.body().getData().get(0).getNombre());
+                Constant.set(Constant.TELEFONO,response.body().getData().get(0).getTelefono());
+                Constant.set(Constant.ID_PERSONA,response.body().getData().get(0).getIdPersona().toString());
 
                 usuarioMutableLiveData.setValue(response.body().getData().get(0));
             }
@@ -69,10 +71,21 @@ public class UsuarioDataModel {
         });
 
     }
-    private JsonObject builJson(Integer id) {
+    private JsonObject builJson(String id) {
         JsonObject jo = new JsonObject();
         try {
-            jo.addProperty("idPersona", 2);
+            jo.addProperty("idPersona", Integer.parseInt(id));
+
+        } catch (Exception ex) {
+
+        }
+        Log.d("json", jo.toString());
+        return jo;
+    }
+    private JsonObject builJsonSwitch(Integer id) {
+        JsonObject jo = new JsonObject();
+        try {
+            jo.addProperty("idPersona", id);
 
         } catch (Exception ex) {
 
@@ -120,7 +133,7 @@ public class UsuarioDataModel {
     public void requestSwitch(Integer idPersona) {
         PostService service = ServiceGenerator
                 .createService(PostService.class, Constant.get(Constant.KEY_ACCESS_TOKEN));
-        Call<PostResponse<switchResponse>> call = service.requestSwitch(builJson(idPersona));
+        Call<PostResponse<switchResponse>> call = service.requestSwitch(builJsonSwitch(idPersona));
 
         call.enqueue(new Callback<PostResponse<switchResponse>>() {
             @Override

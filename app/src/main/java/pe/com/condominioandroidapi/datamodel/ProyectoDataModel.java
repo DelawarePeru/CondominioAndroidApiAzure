@@ -17,12 +17,13 @@ import pe.com.condominioandroidapi.entities.layoutResponse;
 import pe.com.condominioandroidapi.service.PostService;
 import pe.com.condominioandroidapi.util.Constant;
 import pe.com.condominioandroidapi.util.ServiceGenerator;
+import pe.com.condominioandroidapi.util.basecomponent.BaseDataModel;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class ProyectoDataModel {
-
+public class ProyectoDataModel  extends BaseDataModel {
+    private MutableLiveData<List<VentaResponse>> vincularMutableLiveData;
     private MutableLiveData<List<VentaResponse>> proyectListMutableLiveData;
     private MutableLiveData<List<DepartamentoResponse>> departamentoListMutableLiveData;
     private MutableLiveData<List<ProvinciaResponse>> provinciaListMutableLiveData;
@@ -32,6 +33,7 @@ public class ProyectoDataModel {
         proyectListMutableLiveData = new MutableLiveData<>();
         departamentoListMutableLiveData = new MutableLiveData<>();
         provinciaListMutableLiveData = new MutableLiveData<>();
+        vincularMutableLiveData = new MutableLiveData<>();
 
     }
 
@@ -46,6 +48,9 @@ public class ProyectoDataModel {
     public MutableLiveData<List<ProvinciaResponse>> getProvinciaListMutableLiveData() {
         return provinciaListMutableLiveData;
     }
+    public MutableLiveData<List<VentaResponse>> getVincularMutableLiveData() {
+        return vincularMutableLiveData;
+    }
     public void requestProyectList(String departamento, String provincia) {
         PostService service = ServiceGenerator
                 .createService(PostService.class, Constant.get(Constant.KEY_ACCESS_TOKEN));
@@ -53,8 +58,41 @@ public class ProyectoDataModel {
         call.enqueue(new Callback<PostResponse<VentaResponse>>() {
             @Override
             public void onResponse(Call<PostResponse<VentaResponse>> call, Response<PostResponse<VentaResponse>> response) {
+                if(response.body().getIdError()==0) {
+
+                    if(response.body().getData().size()>0) {
+                        proyectListMutableLiveData.setValue(response.body().getData());
+                    }
+                    else{
+                        errorMessageLiveData.setValue(response.body().getMensaje());
+
+                    }
+
+                }else
+                {
+                    errorCodeLiveData.setValue(response.code());
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<PostResponse<VentaResponse>> call, Throwable t) {
+
+            }
+        });
+
+
+    }
+
+    public void requestVincular(String codigo, String email) {
+        PostService service = ServiceGenerator
+                .createService(PostService.class, Constant.get(Constant.KEY_ACCESS_TOKEN));
+        Call<PostResponse<VentaResponse>> call = service.Vincular(builJsonValidar(codigo, email));
+        call.enqueue(new Callback<PostResponse<VentaResponse>>() {
+            @Override
+            public void onResponse(Call<PostResponse<VentaResponse>> call, Response<PostResponse<VentaResponse>> response) {
                 Log.d("response", response.body().getData().toString());
-                proyectListMutableLiveData.setValue(response.body().getData());
+                vincularMutableLiveData.setValue(response.body().getData());
             }
 
             @Override
@@ -109,7 +147,19 @@ public class ProyectoDataModel {
 
 
     }
+    private JsonObject builJsonValidar(String codigo, String email) {
+        JsonObject jo = new JsonObject();
+        try {
+            jo.addProperty("codigo", codigo);
+            jo.addProperty("email", email);
 
+
+        } catch (Exception ex) {
+
+        }
+        Log.d("json", jo.toString());
+        return jo;
+    }
     private JsonObject builJson(String departamento, String provincia) {
         JsonObject jo = new JsonObject();
         try {

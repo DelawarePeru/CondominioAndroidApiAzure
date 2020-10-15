@@ -4,9 +4,11 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
@@ -52,21 +54,22 @@ public class presentacionFragment extends BaseFragment {
     @BindView(R.id.pgbDialog)
     ProgressBar pgbDialog;
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public View onCreateView(LayoutInflater inflater,
                              ViewGroup container,
                              Bundle savedInstanceState) {
         viewModel = ViewModelProviders.of(this).get(detalleViewModel.class);
         id_catalogo = ((detalleActivity)this.getActivity()).id_catalogo;
-        logo_empresa = ((detalleActivity)this.getActivity()).logo_empresa;
+       /* logo_empresa = ((detalleActivity)this.getActivity()).logo_empresa;
         logo_proyecto = ((detalleActivity)this.getActivity()).logo_proyecto;
-        perfil_proyecto = ((detalleActivity)this.getActivity()).perfil_proyecto;
+        perfil_proyecto = ((detalleActivity)this.getActivity()).perfil_proyecto;*/
 
         View view =  inflater.inflate(R.layout.fragment_presentacion,
                 container, false);
         ButterKnife.bind(this, view);
 
-        initializeObservers();
+       initializeObservers();
 
         return view;
 
@@ -76,21 +79,28 @@ public class presentacionFragment extends BaseFragment {
 
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void initializeObservers() {
         viewModel.getDetalleMutableLiveData().observeForever(detalle -> {
-            Log.d("detalle", detalle.toString());
+            Log.d("coordenadaX", detalle.get(0).getCoordX());
+            Log.d("coordenadaX", detalle.get(0).getCoordY());
+            Constant.set(Constant.COORDENADA_X,detalle.get(0).getCoordX());
+            Constant.set(Constant.COORDENADA_Y,detalle.get(0).getCoordY());
+
             tvOver.setText(detalle.get(0).getDescripcion());
 
-            byte[] decodedString = Base64.decode(perfil_proyecto, Base64.DEFAULT);
-            Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
-            ivPerfilProyecto.setImageBitmap(decodedByte);
-            ivPerfilProyecto.setScaleType(ImageView.ScaleType.CENTER_CROP);
+                byte[] decodedString = Base64.decode(detalle.get(0).getPerfilProyecto(), Base64.DEFAULT);
+                Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+                ivPerfilProyecto.setImageBitmap(decodedByte);
+                ivPerfilProyecto.setScaleType(ImageView.ScaleType.CENTER_CROP);
 
 
-            byte[] decodedlogoEmpresa = Base64.decode(logo_proyecto, Base64.DEFAULT);
-            Bitmap decodedBytelogoEmpresa = BitmapFactory.decodeByteArray(decodedlogoEmpresa, 0, decodedlogoEmpresa.length);
-            ivlogoProyecto.setImageBitmap(decodedBytelogoEmpresa);
+
+                byte[] decodedlogoEmpresa = Base64.decode(detalle.get(0).getLogoProyecto(), Base64.DEFAULT);
+                Bitmap decodedBytelogoEmpresa = BitmapFactory.decodeByteArray(decodedlogoEmpresa, 0, decodedlogoEmpresa.length);
+                ivlogoProyecto.setImageBitmap(decodedBytelogoEmpresa);
+
 
         });
 
@@ -112,6 +122,6 @@ public class presentacionFragment extends BaseFragment {
     public void onResume()
     {
         super.onResume();
-        viewModel.requestDetalle(Integer.parseInt(id_catalogo));
+       viewModel.requestDetalle(Integer.parseInt(id_catalogo));
     }
 }

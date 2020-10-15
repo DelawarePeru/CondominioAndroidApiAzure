@@ -46,7 +46,8 @@
             android:textSize="15sp"
             android:layout_weight="0.8"
             android:textColor="@color/marcaTitle"
-            android:background="@drawable/edittext_border"/>
+            android:background="@drawable/edittext_border"
+            android:autofillHints="" />
         <ImageView
             android:id="@+id/ivFiltro"
             android:layout_weight="0.1"

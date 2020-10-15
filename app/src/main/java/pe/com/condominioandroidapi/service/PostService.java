@@ -20,6 +20,7 @@ import pe.com.condominioandroidapi.entities.PlanoGridResponse;
 import pe.com.condominioandroidapi.entities.PostResponse;
 import pe.com.condominioandroidapi.entities.ProvinciaResponse;
 import pe.com.condominioandroidapi.entities.ProyectoResponse;
+import pe.com.condominioandroidapi.entities.TipoInmuebleResponse;
 import pe.com.condominioandroidapi.entities.UsuarioResponse;
 import pe.com.condominioandroidapi.entities.VentaResponse;
 import pe.com.condominioandroidapi.entities.layoutResponse;
@@ -72,7 +73,11 @@ public interface PostService {
             @Body JsonObject jsonObject
 
     );
+    @POST("Inmueble/VincularInmueble")
+    Call<PostResponse<VentaResponse>> Vincular(
+            @Body JsonObject jsonObject
 
+    );
     @POST("Venta/PresentacionProyecto")
     Call<PostResponse<DetalleResponse>> PresentacionProyecto(
             @Body JsonObject jsonObject
@@ -90,7 +95,11 @@ public interface PostService {
             @Body JsonObject jsonObject
 
     );
+    @POST("Venta/TipoInmueble")
+    Call<PostResponse<TipoInmuebleResponse>> TipoInmueble(
+            @Body JsonObject jsonObject
 
+    );
     @POST("Venta/PlanoPorTipo")
     Call<PostResponse<PlanoGridResponse>> PlanoGrid(
             @Body JsonObject jsonObject

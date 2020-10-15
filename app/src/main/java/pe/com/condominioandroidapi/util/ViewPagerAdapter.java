@@ -35,7 +35,7 @@ public class ViewPagerAdapter extends PagerAdapter {
     private Context context;
     private List<GaleriaResponse> galeria;
     private LayoutInflater layoutInflater;
-   // private  Integer[] images = {R.drawable.slide1 , R.drawable.slide2,R.drawable.slide3};
+    // private  Integer[] images = {R.drawable.slide1 , R.drawable.slide2,R.drawable.slide3};
 
 
     public ViewPagerAdapter(Context context, List<GaleriaResponse> galeria) {
@@ -58,9 +58,9 @@ public class ViewPagerAdapter extends PagerAdapter {
     public Object instantiateItem(@NonNull ViewGroup container, int position) {
         layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view= layoutInflater.inflate(R.layout.item_photo,null);
-       byte[] decodedString = Base64.decode(galeria.get(position).getImage(), Base64.DEFAULT);
+        byte[] decodedString = Base64.decode(galeria.get(position).getImage(), Base64.DEFAULT);
         Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
-       ImageView ivSlide = (ImageView) view.findViewById(R.id.ivSlide);
+        ImageView ivSlide = (ImageView) view.findViewById(R.id.ivSlide);
         ImageView ivNext = (ImageView) view.findViewById(R.id.ivNext);
         ImageView tvBack = (ImageView) view.findViewById(R.id.ivBack);
         ivSlide.setImageBitmap(decodedByte);
@@ -77,28 +77,24 @@ public class ViewPagerAdapter extends PagerAdapter {
         if (galeria.get(position).getTitulo() == null)
             tvOver.setVisibility(View.INVISIBLE);
         else
-        tvOver.setText(galeria.get(position).getTitulo().toUpperCase());
+            tvOver.setText(galeria.get(position).getTitulo().toUpperCase());
 
         view.setOnClickListener(v -> {
             String img = galeria.get(position).getImage();
+            byte[] decoded = Base64.decode(img, Base64.DEFAULT);
+            Bitmap decodedbite = BitmapFactory.decodeByteArray(decoded, 0, decoded.length);
             int compressedDataLength = 0;
+            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+            decodedbite.compress(Bitmap.CompressFormat.PNG, 50, stream);
+            byte[] byteArray = stream.toByteArray();
             try {
-                byte[] input = img.getBytes("UTF-8");
+                Intent intent = new Intent(context, PhotoViewerActivity.class);
+                intent.putExtra("image", byteArray);
+                context.startActivity(intent);
+            }catch (Exception e)
+            {
 
-                byte[] output = new byte[100];
-                Deflater compresser = new Deflater();
-                compresser.setInput(input);
-                compresser.finish();
-                 compressedDataLength = compresser.deflate(output);
-                compresser.end();
-
-
-            } catch (IOException e) {
-                e.printStackTrace();
             }
-            Intent intent = new Intent(context,PhotoViewerActivity.class);
-            intent.putExtra("image", img);
-            context.startActivity(intent);
         });
         ViewPager viewPager = (ViewPager) container;
         viewPager.addView(view,0);

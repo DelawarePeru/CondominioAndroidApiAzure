@@ -17,11 +17,12 @@ import pe.com.condominioandroidapi.entities.ProyectoResponse;
 import pe.com.condominioandroidapi.service.PostService;
 import pe.com.condominioandroidapi.util.Constant;
 import pe.com.condominioandroidapi.util.ServiceGenerator;
+import pe.com.condominioandroidapi.util.basecomponent.BaseDataModel;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class PostDatamodel {
+public class PostDatamodel   extends BaseDataModel {
 
     private MutableLiveData<List<InmuebleResponse>> proListMutableLiveData;
 
@@ -46,13 +47,22 @@ public class PostDatamodel {
             @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onResponse(Call<PostResponse<InmuebleResponse>> call, Response<PostResponse<InmuebleResponse>> response) {
-                if(response.body().getData().size()!=0) {
-                    Constant.set(Constant.ID_PERSONA,Integer.toString(response.body().getData().get(0).getIdPersona()));
-                    proListMutableLiveData.setValue(response.body().getData());
-                }
-                else{
+                if(response.body().getIdError()==0)
+                {
+                        if(response.body().getData().size()>0) {
+                            Constant.set(Constant.ID_PERSONA,Integer.toString(response.body().getData().get(0).getIdPersona()));
+                            proListMutableLiveData.setValue(response.body().getData());
+                        }
+                        else{
+                            errorMessageLiveData.setValue(response.body().getMensaje());
+                            proListMutableLiveData.setValue(response.body().getData());
+
+                        }
+                }else {
+                    errorMessageLiveData.setValue("No se pudo obtener los datos correctamente");
 
                 }
+
             }
 
             @Override

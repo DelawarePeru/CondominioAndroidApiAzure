@@ -36,7 +36,7 @@ public class PrincipalAdapter extends RecyclerView.Adapter<PrincipalAdapter.View
     public Boolean esUnico;
 
 
-        public PrincipalAdapter(List<InmuebleResponse> solicitudes, DetalleResultadosListener listener) {
+    public PrincipalAdapter(List<InmuebleResponse> solicitudes, DetalleResultadosListener listener) {
 
         this.solicitudes = solicitudes;
         this.listener=listener;
@@ -101,6 +101,12 @@ public class PrincipalAdapter extends RecyclerView.Adapter<PrincipalAdapter.View
             byte[] decodedString1 = Base64.decode(logoProyecto, Base64.DEFAULT);
             Bitmap decodedByte2 = BitmapFactory.decodeByteArray(decodedString1, 0, decodedString1.length);
             img_title_small.setImageBitmap(decodedByte2);
+
+            String logoEmpresa = dato.getLogoEmpresa();
+            byte[] decodedlogoEmpresa = Base64.decode(logoEmpresa, Base64.DEFAULT);
+            Bitmap decodedBytelogoEmpresa = BitmapFactory.decodeByteArray(decodedlogoEmpresa, 0, decodedlogoEmpresa.length);
+            img_title.setScaleType(ImageView.ScaleType.FIT_XY);
+            img_title.setImageBitmap(decodedBytelogoEmpresa);
 
             rlDetalle.setOnClickListener((View v) -> {
                 Log.d("aqui", dato.getDireccion());

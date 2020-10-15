@@ -3,6 +3,7 @@ package pe.com.condominioandroidapi.activity.Inmueble;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.Toast;
@@ -54,7 +55,8 @@ public class ListaInmueblesFragment extends  BaseActivity implements InmuebleLis
         setContentView(R.layout.pop_inmueble);
         ButterKnife.bind(this);
         viewModel = ViewModelProviders.of(this).get(ListaInmueblesViewModel.class);
-
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
+                WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
         initializeObjects();
         initializeObservers();
         setupViews();
@@ -65,7 +67,6 @@ public class ListaInmueblesFragment extends  BaseActivity implements InmuebleLis
     public void initializeObjects() {
 
         idProyecto = getIntent().getStringExtra(Constant.ID_PROYECTO);
-        Log.d("IDPROYECTOOOOOO1", idProyecto);
 
 
     }
@@ -85,6 +86,8 @@ public class ListaInmueblesFragment extends  BaseActivity implements InmuebleLis
             public void onChanged(@Nullable List<InmuebleListResponse> inmueble) {
                 rvInmuebles.setAdapter(new InmuebleListAdapter
                         (inmueble, ListaInmueblesFragment.this ));
+                getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+
                 if(inmueble.size()>1)
                     esUnico = false;
                 esUnico=true;
@@ -96,7 +99,8 @@ public class ListaInmueblesFragment extends  BaseActivity implements InmuebleLis
             @Override
             public void onChanged(@Nullable Integer value) {
                 if (value != null)
-                    pgbDialog.setVisibility(value);
+                pgbDialog.setVisibility(value);
+
             }
         });
 
@@ -109,26 +113,26 @@ public class ListaInmueblesFragment extends  BaseActivity implements InmuebleLis
     @OnClick(R.id.btnAceptarEnvio)
     public void onClickBtnOk() {
 
-    if(idInmueble == null)
-    {
-        Toast.makeText(this,"Se debe seleccionar un inmueble", Toast.LENGTH_LONG).show();
-
-
-    }else {
-        try {
-            Intent intent = new Intent(this, layoutInmueble.class);
-            intent.putExtra(Constant.id_Inmueble, idInmueble);
-            intent.putExtra(Constant.CODIGO_INMUEBLE, codigo);
-            intent.putExtra(Constant.ID_PROYECTO, idProyecto);
-            startActivity(intent);
-
-            finish();
-        }
-        catch (Exception e)
+        if(idInmueble == null)
         {
+            Toast.makeText(this,"Se debe seleccionar un inmueble", Toast.LENGTH_LONG).show();
 
+
+        }else {
+            try {
+                Intent intent = new Intent(this, layoutInmueble.class);
+                intent.putExtra(Constant.id_Inmueble, idInmueble);
+                intent.putExtra(Constant.CODIGO_INMUEBLE, codigo);
+                intent.putExtra(Constant.ID_PROYECTO, idProyecto);
+                startActivity(intent);
+
+                finish();
+            }
+            catch (Exception e)
+            {
+
+            }
         }
-    }
     }
 
     @Override
@@ -142,43 +146,43 @@ public class ListaInmueblesFragment extends  BaseActivity implements InmuebleLis
         Log.d("datoidProyecto", String.valueOf(dato.getIdProyecto()));
     }
 
-/*
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        initializeView();
-    }
+    /*
+        @Override
+        public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+            super.onViewCreated(view, savedInstanceState);
+            initializeView();
+        }
 
-    @Override
-    public void initializeObjects() {
+        @Override
+        public void initializeObjects() {
 
-    }
-    public void setupViews(){
-        ButterKnife.bind(this.getActivity());
-        rvInmuebles.setLayoutManager(new LinearLayoutManager(this.getActivity()));
-        rvInmuebles.setAdapter(new InmuebleListAdapter(new ArrayList<InmuebleListResponse>(), this));
+        }
+        public void setupViews(){
+            ButterKnife.bind(this.getActivity());
+            rvInmuebles.setLayoutManager(new LinearLayoutManager(this.getActivity()));
+            rvInmuebles.setAdapter(new InmuebleListAdapter(new ArrayList<InmuebleListResponse>(), this));
 
-    }
-    @Override
-    public void initializeObservers() {
+        }
+        @Override
+        public void initializeObservers() {
 
-        viewModel.getInmuListMutableLiveData().observeForever(new Observer <List<InmuebleListResponse>>() {
-            @Override
-            public void onChanged(@Nullable List<InmuebleListResponse> inmueble) {
-                rvInmuebles.setAdapter(new InmuebleListAdapter
-                        (inmueble, ListaInmueblesFragment.this ));
-            }
-        });
+            viewModel.getInmuListMutableLiveData().observeForever(new Observer <List<InmuebleListResponse>>() {
+                @Override
+                public void onChanged(@Nullable List<InmuebleListResponse> inmueble) {
+                    rvInmuebles.setAdapter(new InmuebleListAdapter
+                            (inmueble, ListaInmueblesFragment.this ));
+                }
+            });
 
-    }
+        }
 
-    @Override
-    public void onDetalleItemClickListener(InmuebleResponse dato) {
-        Log.d("seleccione" , "seleccione" );
+        @Override
+        public void onDetalleItemClickListener(InmuebleResponse dato) {
+            Log.d("seleccione" , "seleccione" );
 
 
 
-    }*/
+        }*/
     @Override
     public void onResume() {
         super.onResume();

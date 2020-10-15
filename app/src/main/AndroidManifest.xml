@@ -32,6 +32,10 @@
             android:configChanges="orientation"
             android:theme="@style/Theme.AppCompat.Translucent"/>
         <activity
+            android:name=".activity.vinculacion.VinculacionActivity"
+            android:configChanges="orientation"
+            android:theme="@style/Theme.AppCompat.Translucent"/>
+        <activity
             android:name=".activity.filtro.filtroActivity"
             android:configChanges="orientation"
             android:theme="@style/Theme.AppCompat.Translucent"/>

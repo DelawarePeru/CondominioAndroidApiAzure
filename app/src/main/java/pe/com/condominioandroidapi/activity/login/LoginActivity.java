@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -35,6 +36,18 @@ public class LoginActivity extends BaseFragment {
     @BindView(R.id.etUsuario) EditText etUsuario;
     @BindView(R.id.etPassword) EditText etPassword;
     @BindView(R.id.btnIngresar) Button btnIngresar;
+    @BindView(R.id.btnRegistrar) Button btnRegistrar;
+    @BindView(R.id.tvNuevoRegistro) TextView tvNuevoRegistro;
+    @BindView(R.id.titleLogin) TextView titleLogin;
+    @BindView(R.id.tvCancelar) TextView tvCancelar;
+    @BindView(R.id.texto) TextView texto;
+    @BindView(R.id.btnEnviar) Button btnEnviar;
+
+    @BindView(R.id.tvOlvidarContraseña) TextView tvOlvidarContraseña;
+    @BindView(R.id.etNombre) EditText etNombre;
+    @BindView(R.id.etApellido) EditText etApellido;
+    @BindView(R.id.etTelefono) EditText etTelefono;
+    @BindView(R.id.etPasswordRepetir) EditText etPasswordRepetir;
 
 
     @Override
@@ -94,6 +107,18 @@ public class LoginActivity extends BaseFragment {
                         }
                     }
                 });
+        loginViewModel.getUsersSuccess().observe(this,
+                new Observer<String>() {
+                    @Override
+                    public void onChanged(@Nullable String loginResponse) {
+                        loginViewModel.userRegistroPersona(
+                                Constant.get(Constant.ID_USER),
+                                etNombre.getText().toString(),
+                                etApellido.getText().toString(),
+                                etTelefono.getText().toString(),
+                                false);
+                    }
+                });
     }
 
     @Override
@@ -110,11 +135,105 @@ public class LoginActivity extends BaseFragment {
                 "mirandola_ale19@hotmail.com", "Claudia01@", false);
 */
     }
+    @OnClick(R.id.btnRegistrar)
+    void onClickRegistrar() {
 
+        enableViewsRegistro(false);
+
+       loginViewModel.userRegistro(
+                etUsuario.getText().toString(),
+                etPassword.getText().toString(),
+                etNombre.getText().toString(),
+                etApellido.getText().toString(),
+                etTelefono.getText().toString(),
+                etPasswordRepetir.getText().toString(),
+                false);
+
+/*
+        loginViewModel.userRegistro(
+                "walter_12m@hotmail.com",
+                "Claudia01@",
+                "Elena",
+                "Miranda Chillitupa",
+                "987654321",
+                "Claudia01@",
+                false);
+*/
+    }
+    @OnClick(R.id.btnEnviar)
+    void onClickbtnEnviar() {
+
+        loginViewModel.recuperarContrasena(etUsuario.getText().toString());
+
+    }
+    @OnClick(R.id.tvOlvidarContraseña)
+    void onClickOlvidarContraseña() {
+        titleLogin.setText("Recuperar Contraseña");
+        texto.setVisibility(View.VISIBLE);
+        btnEnviar.setVisibility(View.VISIBLE);
+        etPassword.setVisibility(View.GONE);
+        btnIngresar.setVisibility(View.GONE);
+        tvNuevoRegistro.setVisibility(View.GONE);
+        tvOlvidarContraseña.setVisibility(View.GONE);
+        tvCancelar.setVisibility(View.VISIBLE);
+
+
+    }
+    @OnClick(R.id.tvNuevoRegistro)
+    void onClickNuevoRegistro() {
+        MostrarRegistro();
+
+
+    }
+    @OnClick(R.id.tvCancelar)
+    void onClicktvCancelar() {
+        OcultarRegistro();
+        texto.setVisibility(View.GONE);
+        btnEnviar.setVisibility(View.GONE);
+        btnIngresar.setVisibility(View.VISIBLE);
+        etPassword.setVisibility(View.VISIBLE);
+        titleLogin.setText("Bienvenido");
+        tvNuevoRegistro.setVisibility(View.VISIBLE);
+
+
+    }
+    void MostrarRegistro()
+    {
+        etNombre.setVisibility(View.VISIBLE);
+        etApellido.setVisibility(View.VISIBLE);
+        etTelefono.setVisibility(View.VISIBLE);
+        etPasswordRepetir.setVisibility(View.VISIBLE);
+        tvNuevoRegistro.setVisibility(View.GONE);
+        tvOlvidarContraseña.setVisibility(View.GONE);
+        btnIngresar.setVisibility(View.GONE);
+        btnRegistrar.setVisibility(View.VISIBLE);
+        tvCancelar.setVisibility(View.VISIBLE);
+    }
+    void OcultarRegistro()
+    {
+        etNombre.setVisibility(View.GONE);
+        etApellido.setVisibility(View.GONE);
+        etTelefono.setVisibility(View.GONE);
+        etPasswordRepetir.setVisibility(View.GONE);
+        tvNuevoRegistro.setVisibility(View.VISIBLE);
+        tvOlvidarContraseña.setVisibility(View.VISIBLE);
+        btnIngresar.setVisibility(View.VISIBLE);
+        btnRegistrar.setVisibility(View.GONE);
+        tvCancelar.setVisibility(View.GONE);
+    }
     private void enableViews(boolean enable) {
         etPassword.setEnabled(enable);
         etUsuario.setEnabled(enable);
         btnIngresar.setEnabled(enable);
+    }
+    private void enableViewsRegistro(boolean enable) {
+        etPassword.setEnabled(enable);
+        etUsuario.setEnabled(enable);
+        etPasswordRepetir.setEnabled(enable);
+        etTelefono.setEnabled(enable);
+        etApellido.setEnabled(enable);
+        etNombre.setEnabled(enable);
+        btnRegistrar.setEnabled(enable);
     }
     private void showMessage(String m) {
         Snackbar.make(etPassword, m, Snackbar.LENGTH_LONG).show();

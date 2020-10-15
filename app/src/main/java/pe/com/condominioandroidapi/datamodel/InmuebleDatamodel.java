@@ -53,7 +53,7 @@ public class InmuebleDatamodel {
     private JsonObject builJson(Integer id, Integer idProyecto) {
         JsonObject jo = new JsonObject();
         try {
-            jo.addProperty("idPersona", 2);
+            jo.addProperty("idPersona", id);
             jo.addProperty("idProyecto", idProyecto);
 
         } catch (Exception ex) {

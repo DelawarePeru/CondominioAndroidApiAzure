@@ -5,31 +5,31 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:theme="@style/AppTheme.PopupOverlay">
-    <RelativeLayout
-        android:background="@color/marcaPrimary"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:gravity="center">
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbarMain"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            app:popupTheme="@style/AppTheme.PopupOverlay"/>
+  <RelativeLayout
+      android:background="@color/marcaPrimary"
+      android:layout_width="fill_parent"
+      android:layout_height="fill_parent"
+      android:gravity="center">
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbarMain"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:popupTheme="@style/AppTheme.PopupOverlay"/>
 
-        <ImageView
-            android:id="@+id/ivTituloBar"
-            android:layout_width="137dp"
-            android:layout_height="23dp"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:contentDescription="@string/app_name" />
-        <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:src="@drawable/ic_notificacion"
-            android:contentDescription="@string/app_name" />
+    <ImageView
+        android:id="@+id/ivTituloBar"
+        android:layout_width="137dp"
+        android:layout_height="23dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:contentDescription="@string/app_name" />
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:src="@drawable/ic_notificacion"
+        android:contentDescription="@string/app_name" />
 
-    </RelativeLayout>
+  </RelativeLayout>
 </com.google.android.material.appbar.AppBarLayout>

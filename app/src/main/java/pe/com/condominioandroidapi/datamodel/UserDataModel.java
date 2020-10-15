@@ -8,6 +8,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.lifecycle.MutableLiveData;
 import com.google.gson.JsonObject;
+
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
@@ -20,6 +22,8 @@ import javax.crypto.spec.SecretKeySpec;
 
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import okhttp3.ResponseBody;
+import pe.com.condominioandroidapi.entities.PostResponse;
 import pe.com.condominioandroidapi.entities.UserResponse;
 import pe.com.condominioandroidapi.service.UsuarioService;
 import pe.com.condominioandroidapi.util.ServiceGenerator;
@@ -32,9 +36,9 @@ import retrofit2.Response;
 public class UserDataModel extends BaseDataModel {
     private MutableLiveData<Integer> progressLiveData;
     private MutableLiveData<Integer> totalSizeLiveData;
-  //  private MutableLiveData<DocumentCertero> fileLiveData;
+    //  private MutableLiveData<DocumentCertero> fileLiveData;
     private MutableLiveData<String> userResult;
-    private MutableLiveData<List<UserResponse>> userListResult;
+    private MutableLiveData<String> userListResult;
     private static SecretKeySpec secretKey;
     private static byte[] key;
 
@@ -51,7 +55,7 @@ public class UserDataModel extends BaseDataModel {
         return userResult;
     }
 
-    public MutableLiveData<List<UserResponse>> getUserListResult() {
+    public MutableLiveData<String> getUserListResult() {
         return userListResult;
     }
 
@@ -70,16 +74,16 @@ public class UserDataModel extends BaseDataModel {
                base64 = "Basic " + Base64.encodeToString(
                        (username + ":" + password).getBytes(), Base64.NO_WRAP);
             */
-           String passEncrypt = encrypt(password,Constant.base64EncodedSecret);
-          // String passDecrypt = decrypt(passEncrypt,Constant.base64EncodedSecret);
+            String passEncrypt = encrypt(password,Constant.base64EncodedSecret);
+            // String passDecrypt = decrypt(passEncrypt,Constant.base64EncodedSecret);
             Log.d("passEncrypt",passEncrypt);
-           // Log.d("passEncrypt",passDecrypt);
+            // Log.d("passEncrypt",passDecrypt);
             base64 = "Basic " + Base64.encodeToString(
                     (username + ":" + password).getBytes(), Base64.NO_WRAP);
             UsuarioService loginService = ServiceGenerator
                     .createServiceLogin(UsuarioService.class, Constant.KEY_ACCESS_TOKEN);
 
-          //  Call<List<UserResponse>> call = loginService.basicLogin();
+            //  Call<List<UserResponse>> call = loginService.basicLogin();
             Call<String> call = loginService.basicLogin(builJson(username, passEncrypt));
 
             call.enqueue(new Callback<String>() {
@@ -134,6 +138,137 @@ public class UserDataModel extends BaseDataModel {
         catch (Exception ex) {
             errorCodeLiveData.setValue(-1);
         }
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    public void registrarUsuario(String username, String password, String  passRepetir ,
+                                 String nombre, String apellido,String telefono , Boolean isLoggedIn) {
+        try {
+            UsuarioService loginService = ServiceGenerator
+                    .createServiceLogin(UsuarioService.class, Constant.KEY_ACCESS_TOKEN);
+
+            Call<ResponseBody> call = loginService.registro(builJsonRegistro(username, password, passRepetir));
+
+            call.enqueue(new Callback<ResponseBody>() {
+                @Override
+                public void onResponse(@NonNull Call<ResponseBody> call,
+                                       @NonNull Response<ResponseBody> response) {
+
+                    if(response.isSuccessful()) {
+
+                        if (response.body() != null) {
+                                try {
+                                    Constant.set(Constant.ID_USER,response.body().string());
+                                    userListResult.setValue(Constant.get(Constant.ID_USER));
+
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                }
+
+                        } else {
+                            errorMessageLiveData.setValue("El usuario ya se encuentra registrado");
+                            Constant.setupAuthentication("");
+                        }
+                    }
+                    else{
+
+                    }
+
+                }
+
+                @Override
+                public void onFailure(@NonNull Call<ResponseBody> call, @NonNull Throwable t) {
+                }
+            });
+        }
+        catch (Exception ex) {
+            errorCodeLiveData.setValue(-1);
+        }
+
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    public void registrarPersona(String id, String nombre, String  apellido , String telefono )
+    {
+
+        try {
+            UsuarioService loginService = ServiceGenerator
+                    .createService(UsuarioService.class, Constant.KEY_ACCESS_TOKEN);
+
+            Call<PostResponse> call = loginService.AgregarPersona(builJsonPersona(id,nombre,apellido , telefono));
+
+            call.enqueue(new Callback<PostResponse>() {
+                @RequiresApi(api = Build.VERSION_CODES.O)
+                @Override
+                public void onResponse(@NonNull Call<PostResponse> call,
+                                       @NonNull Response<PostResponse> response) {
+                    if(response.isSuccessful()) {
+
+                        userResult.setValue(response.body().getMensaje());
+
+
+                        } else {
+                            errorMessageLiveData.setValue("No se pudo obtener los datos correctamente");
+                            Constant.setupAuthentication("");
+
+                     }
+
+                }
+
+                @Override
+                public void onFailure(@NonNull Call<PostResponse> call, @NonNull Throwable t) {
+                }
+            });
+        }
+        catch (Exception ex) {
+            errorCodeLiveData.setValue(-1);
+        }
+    }
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    public void recuperarContrasena(String username) {
+        try {
+            UsuarioService loginService = ServiceGenerator
+                    .createServiceLogin(UsuarioService.class, Constant.KEY_ACCESS_TOKEN);
+
+            Call<ResponseBody> call = loginService.recuperar(builJson(username));
+
+            call.enqueue(new Callback<ResponseBody>() {
+                @Override
+                public void onResponse(@NonNull Call<ResponseBody> call,
+                                       @NonNull Response<ResponseBody> response) {
+
+                    if(response.isSuccessful()) {
+
+                        if (response.body() != null) {
+                            try {
+                                Constant.set(Constant.ID_USER,response.body().string());
+                                userResult.setValue(response.body().string());
+
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+
+                        } else {
+                            errorMessageLiveData.setValue("El usuario ya se encuentra registrado");
+                            Constant.setupAuthentication("");
+
+                        }
+                    }
+                    else{
+
+                    }
+
+                }
+
+                @Override
+                public void onFailure(@NonNull Call<ResponseBody> call, @NonNull Throwable t) {
+                }
+            });
+        }
+        catch (Exception ex) {
+            errorCodeLiveData.setValue(-1);
+        }
+
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -206,6 +341,19 @@ public class UserDataModel extends BaseDataModel {
         return null;
     }
 
+    private JsonObject builJson(String username) {
+        JsonObject jo = new JsonObject();
+        try {
+            jo.addProperty("Email", username);
+
+
+        } catch (Exception ex) {
+
+        }
+        Log.d("json", jo.toString());
+        return jo;
+    }
+
     private JsonObject builJson(String username, String encrypt) {
         JsonObject jo = new JsonObject();
         try {
@@ -217,6 +365,47 @@ public class UserDataModel extends BaseDataModel {
 
         }
         Log.d("json", jo.toString());
+        return jo;
+    }
+    private JsonObject builJsonRegistro(String username, String password, String
+                                        passwordRepetir) {
+        JsonObject jo = new JsonObject();
+        try {
+            jo.addProperty("Confirm password", passwordRepetir);
+            jo.addProperty("Password", password);
+            jo.addProperty("Email", username);
+
+
+        } catch (Exception ex) {
+
+        }
+        return jo;
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    private JsonObject builJsonPersona(String id, String nombre, String
+            apellido , String telefono)
+    {
+        String words[] = apellido.split("\\s+");
+        JsonObject jo = new JsonObject();
+        try {
+            if (id.length() > 1) {
+                jo.addProperty("idUser", Constant.get(Constant.ID_USER));
+
+            }else
+            {
+                jo.addProperty("idUser", id);
+
+            }
+            jo.addProperty("nombre", nombre);
+            jo.addProperty("apellidoPaterno",words[0]);
+            jo.addProperty("apellidoMaterno",words[1]);
+            jo.addProperty("telefono", telefono);
+
+        Log.d("loginjo",jo.toString());
+        } catch (Exception ex) {
+
+        }
         return jo;
     }
 

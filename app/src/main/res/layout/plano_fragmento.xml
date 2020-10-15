@@ -4,74 +4,74 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     tools:context=".activity.detalle.fragment.planoFragment">
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical">
-
     <LinearLayout
-        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:weightSum="3"
-        >
-        <Button
-            android:id="@+id/btnFlat"
-            android:text="FLAT"
-            android:minHeight="20sp"
-            android:layout_weight="1"
-            android:paddingTop="5sp"
-            android:paddingBottom="5sp"
-            android:background="@color/colorRipple"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            />
-        <Button
-            android:id="@+id/btnDuplex"
-            android:text="DUPLEX"
-            android:layout_weight="1"
-            android:minHeight="20sp"
-            android:paddingTop="5sp"
-            android:paddingBottom="5sp"
-            android:background="@color/colorRipple"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-        <Button
-            android:id="@+id/btnComun"
-            android:text="A. COMUN"
-            android:minHeight="20sp"
-            android:paddingTop="5sp"
-            android:paddingBottom="5sp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@color/colorRipple"
-            android:layout_weight="1"     />
-    </LinearLayout>
-    <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/linearLayout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
         android:orientation="vertical">
 
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:id="@+id/menuTipo"
+            >
+      <!--      <Button
+                android:id="@+id/btnFlat"
+                android:text="FLAT"
+                android:minHeight="20sp"
+                android:layout_weight="1"
+                android:paddingTop="5sp"
+                android:paddingBottom="5sp"
+                android:background="@color/colorRipple"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                />
+            <Button
+                android:id="@+id/btnDuplex"
+                android:text="DUPLEX"
+                android:layout_weight="1"
+                android:minHeight="20sp"
+                android:paddingTop="5sp"
+                android:paddingBottom="5sp"
+                android:background="@color/colorRipple"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <Button
+                android:id="@+id/btnComun"
+                android:text="A. COMUN"
+                android:minHeight="20sp"
+                android:paddingTop="5sp"
+                android:paddingBottom="5sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/colorRipple"
+                android:layout_weight="1"     /> -->
+        </LinearLayout>
+        <LinearLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/oculto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+
+        </LinearLayout>
 
     </LinearLayout>
-    <LinearLayout
-        android:id="@+id/oculto"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        >
-
-
-    </LinearLayout>
-
-</LinearLayout>
 
 </FrameLayout>

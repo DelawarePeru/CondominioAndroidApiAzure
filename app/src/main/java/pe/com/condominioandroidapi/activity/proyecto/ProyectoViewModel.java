@@ -2,9 +2,12 @@ package pe.com.condominioandroidapi.activity.proyecto;
 
 import android.app.Application;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Observer;
 
@@ -23,6 +26,7 @@ public class ProyectoViewModel extends BaseViewModel {
     private MutableLiveData<List<VentaResponse>> ventaMutableLiveData;
     private MutableLiveData<List<DepartamentoResponse>> departamentoMutableLiveData;
     private MutableLiveData<List<ProvinciaResponse>> provinciaMutableLiveData;
+    private MutableLiveData<List<VentaResponse>> vincularMutableLiveData;
 
 
     public ProyectoViewModel(@NonNull Application application) {
@@ -31,6 +35,7 @@ public class ProyectoViewModel extends BaseViewModel {
         ventaMutableLiveData = new MutableLiveData<>();
         departamentoMutableLiveData = new MutableLiveData<>();
         provinciaMutableLiveData = new MutableLiveData<>();
+        vincularMutableLiveData =  new MutableLiveData<>();
         setupObservers();
 
     }
@@ -62,6 +67,28 @@ public class ProyectoViewModel extends BaseViewModel {
                 provinciaMutableLiveData.setValue(pro);
             }
         });
+        datamodel.getVincularMutableLiveData().observeForever(new Observer <List<VentaResponse>>() {
+            @Override
+            public void onChanged(List<VentaResponse> pro) {
+                // 2. Al recibir la lista desde el servicio escondemos el ProgressBar
+                onRetrieveDataFinish();
+                vincularMutableLiveData.setValue(pro);
+            }
+        });
+        datamodel.getErrorCodeLiveData().observeForever(new Observer<Integer>() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
+            @Override
+            public void onChanged(@Nullable Integer errorCode) {
+                messageResult.setValue(getMessageByErrorCode(errorCode));
+            }
+        });
+        datamodel.getErrorMessageLiveData().observeForever(new Observer<String>() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
+            @Override
+            public void onChanged(@Nullable String s) {
+                messageResult.setValue(s);
+            }
+        });
     }
 
     MutableLiveData<List<VentaResponse>> getProyectListMutableLiveData() {
@@ -73,11 +100,20 @@ public class ProyectoViewModel extends BaseViewModel {
     public MutableLiveData<List<ProvinciaResponse>> getProvinciaListMutableLiveData() {
         return provinciaMutableLiveData;
     }
+    public MutableLiveData<List<VentaResponse>> getVincularMutableLiveData() {
+        return vincularMutableLiveData;
+    }
 
     void requestProyectList(String departamento,String provincia)
     {
         onRetrieveData();
         new ProyectoViewModel.ValidateRequestPrincipalTask(this,departamento,provincia).execute();
+    }
+
+    public void requestVincular(String email, String codigo)
+    {
+        onRetrieveData();
+        new ProyectoViewModel.ValidateRequesCodigo(this,email,codigo).execute();
     }
 
     public void requestDepartamentoList()
@@ -122,6 +158,37 @@ public class ProyectoViewModel extends BaseViewModel {
 
         }
         }
+    private static class ValidateRequesCodigo extends AsyncTask<Void,Void,Boolean>
+    {
+        ProyectoViewModel viewModel;
+        String codigo;
+        String email;
+
+        ValidateRequesCodigo(ProyectoViewModel viewModel, String email, String codigo)
+        {
+            this.viewModel = viewModel;
+            this.codigo = codigo;
+            this.email= email;
+        }
+        @Override
+        protected Boolean doInBackground(Void... voids) {
+            return Helper.isOnline();
+        }
+
+        @Override
+        protected void onPostExecute(Boolean aBoolean) {
+            super.onPostExecute(aBoolean);
+
+            if (aBoolean) {
+                viewModel.datamodel.requestVincular(codigo,email);
+            }
+            else {
+                viewModel.messageResult.setValue("No tienes acceso a internet");
+                viewModel.onRetrieveDataFinish();
+            }
+
+        }
+    }
 
     private static class ValidateRequestDepartamentoTask extends AsyncTask<Void,Void,Boolean>
     {

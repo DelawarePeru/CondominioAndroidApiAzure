@@ -5,92 +5,92 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <include
-        android:id="@+id/toolbar"
-        layout="@layout/appbar"/>
+ <include
+     android:id="@+id/toolbar"
+     layout="@layout/appbar"/>
 
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:paddingRight="15dp"
-        android:paddingLeft="15dp"
-        android:layout_gravity="center"
-        android:weightSum="5"
-        android:background="@color/marcaPrimary"
+ <LinearLayout
+     android:orientation="vertical"
+     android:layout_width="match_parent"
+     android:layout_height="match_parent"
+     android:paddingRight="15dp"
+     android:paddingLeft="15dp"
+     android:layout_gravity="center"
+     android:weightSum="5"
+     android:background="@color/marcaPrimary"
+     >
+
+  <LinearLayout
+      android:id="@+id/llTitutlo"
+      android:orientation="horizontal"
+      android:weightSum="2"
+      android:paddingTop="40dp"
+      android:layout_marginTop="20dp"
+      android:gravity="center_vertical|center_horizontal"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content">
+   <LinearLayout
+       android:layout_height="wrap_content"
+       android:layout_width="match_parent"
+       android:layout_weight="1"
+       android:gravity="left">
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="100dp"
+        android:id="@+id/logo_proyecto"
         >
-
-        <LinearLayout
-            android:id="@+id/llTitutlo"
-            android:orientation="horizontal"
-            android:weightSum="2"
-            android:paddingTop="40dp"
-            android:layout_marginTop="20dp"
-            android:gravity="center_vertical|center_horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <LinearLayout
-                android:layout_height="wrap_content"
-                android:layout_width="match_parent"
-                android:layout_weight="1"
-                android:gravity="left">
-                <ImageView
-                    android:layout_width="150dp"
-                    android:layout_height="100dp"
-                    android:id="@+id/logo_proyecto"
-                    android:background="@drawable/logo_pequeno">
-
-                </ImageView>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_height="wrap_content"
-                android:layout_width="match_parent"
-                android:layout_weight="1"
-                android:gravity="right">
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-                <TextView
-                    android:id="@+id/tvCodigoDocu"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="A - 500"
-                    android:textColor="#FFFFFF"
-                    android:textSize="18dp">
-                </TextView>
-                </LinearLayout>
-            </LinearLayout>
-        </LinearLayout>
-         <ScrollView
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content">
-             <LinearLayout
-                 android:layout_width="match_parent"
-                 android:layout_height="match_parent"
-                 android:orientation="vertical">
-
-
-                 <androidx.recyclerview.widget.RecyclerView
-                                android:id="@+id/rvAmpliaciones"
-                                android:paddingStart="10dp"
-                                android:paddingEnd="10dp"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content">
-
-                            </androidx.recyclerview.widget.RecyclerView>
-
-             </LinearLayout>
-
-         </ScrollView>
-
-
-    </LinearLayout>
-
-    <ProgressBar
-        android:id="@+id/pgbDialog"
+<!--android:background="@drawable/logo_pequeno"-->
+    </ImageView>
+   </LinearLayout>
+   <LinearLayout
+       android:layout_height="wrap_content"
+       android:layout_width="match_parent"
+       android:layout_weight="1"
+       android:gravity="right">
+    <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:visibility="gone" />
+        android:layout_height="wrap_content">
+     <TextView
+         android:id="@+id/tvCodigoDocu"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:text="A - 500"
+         android:textColor="#FFFFFF"
+         android:textSize="18dp">
+     </TextView>
+    </LinearLayout>
+   </LinearLayout>
+  </LinearLayout>
+  <ScrollView
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content">
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:orientation="vertical">
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvAmpliaciones"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+   </LinearLayout>
+
+  </ScrollView>
+
+
+ </LinearLayout>
+
+ <ProgressBar
+     android:id="@+id/pgbDialog"
+     android:layout_width="wrap_content"
+     android:layout_height="wrap_content"
+     android:layout_centerInParent="true"
+     android:visibility="gone" />
 
 </RelativeLayout>

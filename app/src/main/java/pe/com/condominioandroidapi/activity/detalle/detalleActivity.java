@@ -42,11 +42,19 @@ public class detalleActivity extends BaseActivity {
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void initializeObjects() {
-
         viewModel = ViewModelProviders.of(this).get(detalleViewModel.class);
+        Log.d("initializeObjects", "initializeObjects");
+        logo_empresa = getIntent().getStringExtra(Constant.ID_LOGOEMPRESA);
 
         id_catalogo = getIntent().getStringExtra(Constant.ID_CATALOGO);
-        logo_empresa = getIntent().getStringExtra(Constant.ID_LOGOEMPRESA);
+    }
+
+   /*
+
+        viewModel = ViewModelProviders.of(this).get(detalleViewModel.class);
+        Log.d("initializeObjects", "initializeObjects");
+
+        id_catalogo = getIntent().getStringExtra(Constant.ID_CATALOGO);
         logo_proyecto = getIntent().getStringExtra(Constant.ID_LOGOPROYECTO);
         perfil_proyecto = getIntent().getStringExtra(Constant.ID_PERFILEMPRESA);
         Log.d("id_catalogox2", id_catalogo);
@@ -54,7 +62,7 @@ public class detalleActivity extends BaseActivity {
 
 
     }
-
+*/
     @Override
     public void initializeObservers() {
 

@@ -14,14 +14,14 @@
         android:layout_height="wrap_content">
 
 
-            <RadioButton
-                android:id="@+id/rbInmueble"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:buttonTint="@color/marcaTitle"
-                android:text="whatever"
-                android:textColor="#454545">
-            </RadioButton>
+        <RadioButton
+            android:id="@+id/rbInmueble"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:buttonTint="@color/marcaTitle"
+            android:text="whatever"
+            android:textColor="#454545">
+        </RadioButton>
 
 
 

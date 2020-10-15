@@ -103,7 +103,7 @@ public class filtroActivity extends BaseActivity {
                         else {
                             spnProvincia.setEnabled(true);
                             Constant.departamento = response.getNombreDepartamento();
-                          /*  rvResultados.setAdapter(new ResultadosAdapter(new ArrayList<DashboardResponse>(), DashboardFragment.this));*/
+                            /*  rvResultados.setAdapter(new ResultadosAdapter(new ArrayList<DashboardResponse>(), DashboardFragment.this));*/
                             viewModel.requestProvinciaList(response.getId());
                         }
                     }
@@ -152,7 +152,7 @@ public class filtroActivity extends BaseActivity {
     @OnClick(R.id.btnFiltrar)
     public void onClickFiltrar()
     {
-            finish();
+        finish();
     }
     @OnClick(R.id.btnCancelar)
     public void onClickCancelar()

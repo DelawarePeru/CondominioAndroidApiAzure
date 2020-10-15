@@ -14,11 +14,12 @@ import pe.com.condominioandroidapi.entities.PostResponse;
 import pe.com.condominioandroidapi.service.PostService;
 import pe.com.condominioandroidapi.util.Constant;
 import pe.com.condominioandroidapi.util.ServiceGenerator;
+import pe.com.condominioandroidapi.util.basecomponent.BaseDataModel;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class DocumentoDataModel {
+public class DocumentoDataModel extends BaseDataModel {
 
     private MutableLiveData<List<DocumentoResponse<DetalleDocumento>>> documentoMutableLiveData;
 
@@ -44,8 +45,13 @@ public class DocumentoDataModel {
         call.enqueue(new Callback<PostResponse<DocumentoResponse<DetalleDocumento>>>() {
             @Override
             public void onResponse(Call<PostResponse<DocumentoResponse<DetalleDocumento>>> call, Response<PostResponse<DocumentoResponse<DetalleDocumento>>> response) {
-                Log.d("response" , response.body().getData().toString());
-                documentoMutableLiveData.setValue(response.body().getData());
+                if(response.body() != null) {
+                    documentoMutableLiveData.setValue(response.body().getData());
+                } else
+                {
+                    errorMessageLiveData.setValue("No existen documentos.");
+
+                }
             }
 
             @Override

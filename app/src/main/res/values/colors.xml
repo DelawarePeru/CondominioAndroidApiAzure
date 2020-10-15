@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
+  <color name="colorPrimary">#008577</color>
+  <color name="colorPrimaryDark">#00574B</color>
+  <color name="colorAccent">#D81B60</color>
 
-    <color name="colorCerrarSession">#FA5858</color>
-    <color name="colorGuardar">#01D107</color>
+  <color name="colorCerrarSession">#FA5858</color>
+  <color name="colorGuardar">#01D107</color>
 
-    <color name="marcaPrimary">#FFFFFF</color>
-    <!--login-->
-    <color name="backgroundLogin"> #F9F9F9</color>
-    <color name="marcaTitle">#2F2F2F</color>
-    <color name="marcaHeader">#AAAAAA</color>
-    <color name="colorRipple">#D3D3D3</color>
-    <color name="btnLogin"> #5067E4</color>
-    <color name="marcaRed">#EE4329</color>
+  <color name="marcaPrimary">#FFFFFF</color>
+  <!--login-->
+  <color name="backgroundLogin"> #F9F9F9</color>
+  <color name="marcaTitle">#2F2F2F</color>
+  <color name="marcaHeader">#AAAAAA</color>
+  <color name="colorRipple">#D3D3D3</color>
+  <color name="btnLogin"> #5067E4</color>
+  <color name="marcaRed">#EE4329</color>
 
-    <color name="colorSeparator">#E0E1E1</color>
+  <color name="colorSeparator">#E0E1E1</color>
 
 
 </resources>

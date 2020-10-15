@@ -197,13 +197,13 @@ public class SettingFragment extends BaseFragment implements GoogleApiClient.OnC
 
                 if(s.length()==9)
                 {
-                etTelefono.setBackgroundResource(R.drawable.edittext_border);
-                esCorrecto = true;
+                    etTelefono.setBackgroundResource(R.drawable.edittext_border);
+                    esCorrecto = true;
 
 
                 }else {
-                 etTelefono.setBackgroundResource(R.drawable.edittext_border_error);
-                 esCorrecto = false;
+                    etTelefono.setBackgroundResource(R.drawable.edittext_border_error);
+                    esCorrecto = false;
                 }
 
             }
@@ -324,14 +324,14 @@ public class SettingFragment extends BaseFragment implements GoogleApiClient.OnC
                                 if (switchChecked) {
                                     activo = 1;
                                     btn.setChecked(true);
-                                    viewModel.updateSwitchUpdate(2 ,3,1);
+                                    viewModel.updateSwitchUpdate(Integer.parseInt(Constant.get(Constant.ID_PERSONA)) ,3,1);
 
                                 } else {
                                     btn.setChecked(false);
-                                    viewModel.updateSwitchUpdate(2 ,3,0);
+                                    viewModel.updateSwitchUpdate(Integer.parseInt(Constant.get(Constant.ID_PERSONA)) ,3,0);
 
                                 }
-                               // viewModel.updateAvatar(2 , etTelefono.getText().toString());
+                                // viewModel.updateAvatar(2 , etTelefono.getText().toString());
 
 
                             }
@@ -365,11 +365,11 @@ public class SettingFragment extends BaseFragment implements GoogleApiClient.OnC
                                 // "Yes" button was clicked
                                 if (switchChecked) {
                                     btn.setChecked(true);
-                                    viewModel.updateSwitchUpdate(2 ,2,1);
+                                    viewModel.updateSwitchUpdate(Integer.parseInt(Constant.get(Constant.ID_PERSONA))  ,2,1);
 
                                 } else {
                                     btn.setChecked(false);
-                                    viewModel.updateSwitchUpdate(2 ,2,0);
+                                    viewModel.updateSwitchUpdate(Integer.parseInt(Constant.get(Constant.ID_PERSONA))  ,2,0);
 
                                 }
                             }
@@ -403,11 +403,11 @@ public class SettingFragment extends BaseFragment implements GoogleApiClient.OnC
                                 // "Yes" button was clicked
                                 if (switchChecked) {
                                     btn.setChecked(true);
-                                    viewModel.updateSwitchUpdate(2 ,1,1);
+                                    viewModel.updateSwitchUpdate(Integer.parseInt(Constant.get(Constant.ID_PERSONA))  ,1,1);
 
                                 } else {
                                     btn.setChecked(false);
-                                    viewModel.updateSwitchUpdate(2 ,1,0);
+                                    viewModel.updateSwitchUpdate(Integer.parseInt(Constant.get(Constant.ID_PERSONA))  ,1,0);
 
                                 }
                             }
@@ -448,8 +448,10 @@ public class SettingFragment extends BaseFragment implements GoogleApiClient.OnC
         viewModel.getUsuarioMutableLiveData().observeForever(new Observer<UsuarioResponse>() {
             @Override
             public void onChanged(UsuarioResponse usuario) {
-               etEmail.setText(usuario.getCorreo());
-               etTelefono.setText(usuario.getTelefono());
+                etEmail.setText(usuario.getCorreo());
+                etTelefono.setText(usuario.getTelefono());
+                viewModel.requestSwitch(Integer.parseInt(Constant.get(Constant.ID_PERSONA)));
+
             }
         });
 
@@ -522,7 +524,7 @@ public class SettingFragment extends BaseFragment implements GoogleApiClient.OnC
             Toast.makeText(getActivity(),"Los datos ingresados no son correctos.",Toast.LENGTH_SHORT).show();
         }else
         {
-            viewModel.updateAvatar(2 , etTelefono.getText().toString());
+            viewModel.updateAvatar(Integer.parseInt(Constant.get(Constant.ID_PERSONA)) , etTelefono.getText().toString());
             Toast.makeText(getActivity(),"Los datos ingresados fueron actualizados.",Toast.LENGTH_SHORT).show();
 
         }
@@ -572,19 +574,19 @@ public class SettingFragment extends BaseFragment implements GoogleApiClient.OnC
             Toast.makeText(getActivity(),"No se logro vincular.",Toast.LENGTH_SHORT).show();
         }
     }
-   /* private void gotoProfile(){
-        Intent intent=new Intent(getContext() ,SettingFragment.class);
-        startActivity(intent);
-    }*/
+    /* private void gotoProfile(){
+         Intent intent=new Intent(getContext() ,SettingFragment.class);
+         startActivity(intent);
+     }*/
     AccessTokenTracker acs = new AccessTokenTracker() {
-    @Override
-    protected void onCurrentAccessTokenChanged(AccessToken oldAccessToken, AccessToken currentAccessToken) {
-        if (currentAccessToken == null) {
-            Toast.makeText(getContext(), "User Logged out", Toast.LENGTH_SHORT).show();
-        } else {
-            //loadUserProfile(currentAccessToken);
+        @Override
+        protected void onCurrentAccessTokenChanged(AccessToken oldAccessToken, AccessToken currentAccessToken) {
+            if (currentAccessToken == null) {
+                Toast.makeText(getContext(), "User Logged out", Toast.LENGTH_SHORT).show();
+            } else {
+                //loadUserProfile(currentAccessToken);
+            }
         }
-    }
     };
 
     private void loadUserProfile(LoginResult access)
@@ -598,7 +600,7 @@ public class SettingFragment extends BaseFragment implements GoogleApiClient.OnC
                 AlertDialog.Builder builder = new AlertDialog.Builder(getActivity()); // Change "this" to `getActivity()` if you're using this on a fragment
                 LayoutInflater factory = LayoutInflater.from(getActivity());
                 final View view = factory.inflate(R.layout.sample, null);
-                 dialog_imageview = view.findViewById(R.id.dialog_imageview);
+                dialog_imageview = view.findViewById(R.id.dialog_imageview);
                 try {
                     String image_url = "https://graph.facebook.com/" + object.getString("id") + "/picture?type=normal";
                     URL newurl = new URL(image_url);
@@ -711,10 +713,8 @@ public class SettingFragment extends BaseFragment implements GoogleApiClient.OnC
     @Override
     public void onResume() {
         super.onResume();
-        if(Constant.get(Constant.ID_PERSONA)!="") {
-            viewModel.requestAvatar(Integer.parseInt(Constant.get(Constant.ID_PERSONA)));
-            viewModel.requestSwitch(Integer.parseInt(Constant.get(Constant.ID_PERSONA)));
-        }
+            viewModel.requestAvatar(Constant.get(Constant.ID_PERSONA));
+
 
 
     }

@@ -6,6 +6,8 @@ public class UsuarioResponse {
 
     @SerializedName("nombre")
     private String nombre;
+    @SerializedName("idPersona")
+    private Integer idPersona;
     @SerializedName("apellidoPaterno")
     private String apellidoPaterno;
     @SerializedName("apellidoMaterno")
@@ -83,5 +85,13 @@ public class UsuarioResponse {
 
     public void setExtensionArchivo(String extensionArchivo) {
         this.extensionArchivo = extensionArchivo;
+    }
+
+    public Integer getIdPersona() {
+        return idPersona;
+    }
+
+    public void setIdPersona(Integer idPersona) {
+        this.idPersona = idPersona;
     }
 }

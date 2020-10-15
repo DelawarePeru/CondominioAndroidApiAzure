@@ -13,6 +13,36 @@ public class DetalleResponse {
     @SerializedName("descripcion")
     private String descripcion;
 
+
+    @SerializedName("logoProyecto")
+    public String logoProyecto;
+
+
+    @SerializedName("perfilProyecto")
+    public String perfilProyecto;
+
+    @SerializedName("coordX")
+    private String coordX;
+
+    @SerializedName("coordY")
+    private String coordY;
+
+    public String getCoordX() {
+        return coordX;
+    }
+
+    public void setCoordX(String coordX) {
+        this.coordX = coordX;
+    }
+
+    public String getCoordY() {
+        return coordY;
+    }
+
+    public void setCoordY(String coordY) {
+        this.coordY = coordY;
+    }
+
     public int getIdCatalogo() {
         return idCatalogo;
     }
@@ -37,5 +67,19 @@ public class DetalleResponse {
         this.descripcion = descripcion;
     }
 
+    public String getLogoProyecto() {
+        return logoProyecto;
+    }
 
+    public void setLogoProyecto(String logoProyecto) {
+        this.logoProyecto = logoProyecto;
+    }
+
+    public String getPerfilProyecto() {
+        return perfilProyecto;
+    }
+
+    public void setPerfilProyecto(String perfilProyecto) {
+        this.perfilProyecto = perfilProyecto;
+    }
 }

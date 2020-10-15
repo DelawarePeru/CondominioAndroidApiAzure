@@ -1,53 +1,51 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:excludeFromRecents="true"
     android:layout_height="wrap_content"
     android:layout_width="match_parent"
     android:background="@drawable/border_corners_elevation_bottom"
     android:layout_margin="2dp">
-    <LinearLayout
-        android:id="@+id/rlTituloItem"
+  <LinearLayout
+      android:id="@+id/rlTituloItem"
+      android:layout_width="match_parent"
+      android:paddingStart="20dp"
+      android:paddingEnd="20dp"
+      android:paddingBottom="20dp"
+      android:paddingTop="20dp"
+      android:orientation="horizontal"
+      android:layout_height="wrap_content">
+    <TextView
+        android:id="@+id/tvTitulo"
         android:layout_width="match_parent"
-        android:paddingStart="20dp"
-        android:paddingEnd="20dp"
-        android:paddingBottom="20dp"
-        android:paddingTop="20dp"
-        android:orientation="horizontal"
-        android:layout_height="wrap_content">
-        <TextView
-            android:id="@+id/tvTitulo"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@android:color/black"
-            android:textSize="14sp"
-            android:textStyle="bold"
-            android:layout_weight="0.9"
-            android:text="Lugar"/>
-        <ImageView
-            android:id="@+id/ivclose"
-            android:src="@drawable/ic_close"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:layout_weight="0.1"
-            />
-
-    </LinearLayout>
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvInmuebles"
-        android:layout_below="@+id/rlTituloItem"
-        android:layout_width="match_parent"
-        android:layout_marginBottom="15dp"
-        android:layout_marginRight="15dp"
-        android:layout_marginLeft="15dp"
-        android:layout_height="wrap_content"/>
-    <ProgressBar
-        android:id="@+id/pgbDialog"
-        android:visibility="gone"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/black"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:layout_weight="0.9"
+        android:text="Lugar"/>
+    <ImageView
+        android:id="@+id/ivclose"
+        android:src="@drawable/ic_close"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"/>
+        android:layout_gravity="right"
+        android:layout_weight="0.1"
+        />
+
+  </LinearLayout>
+  <androidx.recyclerview.widget.RecyclerView
+      android:id="@+id/rvInmuebles"
+      android:layout_below="@+id/rlTituloItem"
+      android:layout_width="match_parent"
+      android:layout_marginBottom="15dp"
+      android:layout_marginRight="15dp"
+      android:layout_marginLeft="15dp"
+      android:layout_height="wrap_content"/>
+  <ProgressBar
+      android:id="@+id/pgbDialog"
+      android:visibility="gone"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_centerVertical="true"
+      android:layout_centerHorizontal="true"/>
 </RelativeLayout>

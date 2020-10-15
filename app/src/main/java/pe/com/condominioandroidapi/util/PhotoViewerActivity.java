@@ -53,28 +53,21 @@ public class PhotoViewerActivity extends Activity {
         String url = null;
 
         String outputString="";
+        Bitmap bmp = null;
         try {
-             url = getIntent().getStringExtra("image");
+            Bundle extras = getIntent().getExtras();
+            byte[] byteArray = extras.getByteArray("image");
 
+             bmp = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
 
-            byte[] output = new byte[100];
-            // Decompress the bytes
-            Inflater decompresser = new Inflater();
-            decompresser.setInput(output, 0, Integer.parseInt(url));
-            byte[] result = new byte[100];
-            int resultLength = decompresser.inflate(result);
-            decompresser.end();
-             outputString = new String(result, 0, resultLength, "UTF-8");
-
-        } catch (Exception e) {
-            e.printStackTrace();
         }
-        
-        byte[] decodedString = Base64.decode(url, Base64.DEFAULT);
-        Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+        catch (Exception e)
+        {
+
+        }
         ivZoom=findViewById(R.id.ivZoom);
         view=findViewById(R.id.view);
-        ivZoom.setImageBitmap(decodedByte);
+        ivZoom.setImageBitmap(bmp);
         gestureDetector = new GestureDetector(this,new GestureListener());
 
         scaleGestureDetector = new ScaleGestureDetector(this, new ScaleListener());

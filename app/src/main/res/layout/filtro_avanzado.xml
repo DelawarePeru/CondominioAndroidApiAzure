@@ -8,156 +8,156 @@
     android:layout_width="match_parent"
     android:background="@drawable/border_pop_up"
     android:layout_margin="2dp">
-    <RelativeLayout
-        android:id="@+id/filtro"
-        android:layout_width="match_parent"
-        android:paddingStart="20dp"
-        android:paddingEnd="20dp"
+  <RelativeLayout
+      android:id="@+id/filtro"
+      android:layout_width="match_parent"
+      android:paddingStart="20dp"
+      android:paddingEnd="20dp"
+      android:paddingBottom="5dp"
+      android:paddingTop="20dp"
+      android:layout_height="wrap_content">
+    <TextView
+        android:id="@+id/formTi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/black"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:text="Filtro avanzado"/>
+
+    <TextView
+        android:id="@+id/tvDepartamento"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:paddingBottom="5dp"
-        android:paddingTop="20dp"
-        android:layout_height="wrap_content">
-        <TextView
-            android:id="@+id/formTi"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@android:color/black"
-            android:textSize="14sp"
-            android:textStyle="bold"
-            android:text="Filtro avanzado"/>
+        android:layout_below="@+id/formTi"
+        android:text="Departamento"
+        android:textColor="#999"
+        android:textSize="14sp"/>
 
-        <TextView
-            android:id="@+id/tvDepartamento"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:paddingBottom="5dp"
-            android:layout_below="@+id/formTi"
-            android:text="Departamento"
-            android:textColor="#999"
-            android:textSize="14sp"/>
+    <androidx.appcompat.widget.AppCompatSpinner
+        android:id="@+id/spnDepartamento"
+        android:paddingTop="1dp"
+        android:paddingBottom="2dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginStart="10dp"
+        style="@style/select"
+        android:background="@drawable/spinner_background_detalle"            android:dropDownWidth="match_parent"
+        android:theme="@style/appCompatSpinnerStyle"
+        android:layout_below="@+id/tvDepartamento"
+        android:entries="@array/departamento"/>
 
-        <androidx.appcompat.widget.AppCompatSpinner
-            android:id="@+id/spnDepartamento"
-            android:paddingTop="1dp"
-            android:paddingBottom="2dp"
-            android:layout_marginTop="4dp"
-            android:layout_marginBottom="4dp"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginStart="10dp"
-            style="@style/select"
-            android:background="@drawable/spinner_background_detalle"            android:dropDownWidth="match_parent"
-            android:theme="@style/appCompatSpinnerStyle"
-            android:layout_below="@+id/tvDepartamento"
-            android:entries="@array/departamento"/>
+    <!--      <EditText
+              android:id="@+id/etNombre"
+              android:textAllCaps="false"
+              android:hint="Nombre"
+              android:imeOptions="actionDone"
+              android:layout_width="match_parent"
+              android:maxLength="30"
+              android:textColorHint="@color/marcaTitle"
+              android:paddingStart="10dp"
+              android:layout_below="@+id/tvDepartamento"
+              android:paddingEnd="10dp"
+              android:layout_height="40dp"
+              android:layout_marginBottom="15dp"
+              android:textSize="13sp"
+              android:textColor="@color/marcaTitle"
+              android:background="@drawable/edittext_border_setting"/>-->
 
-        <!--      <EditText
-                  android:id="@+id/etNombre"
-                  android:textAllCaps="false"
-                  android:hint="Nombre"
-                  android:imeOptions="actionDone"
-                  android:layout_width="match_parent"
-                  android:maxLength="30"
-                  android:textColorHint="@color/marcaTitle"
-                  android:paddingStart="10dp"
-                  android:layout_below="@+id/tvDepartamento"
-                  android:paddingEnd="10dp"
-                  android:layout_height="40dp"
-                  android:layout_marginBottom="15dp"
-                  android:textSize="13sp"
-                  android:textColor="@color/marcaTitle"
-                  android:background="@drawable/edittext_border_setting"/>-->
+    <TextView
+        android:id="@+id/tvProvincia"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:paddingBottom="5dp"
+        android:layout_below="@+id/spnDepartamento"
+        android:text="Provincia"
+        android:textColor="#999"
+        android:textSize="14sp"/>
+    <androidx.appcompat.widget.AppCompatSpinner
+        android:id="@+id/spnProvincia"
+        android:paddingTop="1dp"
+        android:paddingBottom="2dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginStart="10dp"
+        android:background="@drawable/spinner_background_detalle"            android:dropDownWidth="match_parent"
+        android:theme="@style/appCompatSpinnerStyle"
+        android:layout_below="@+id/tvProvincia"
+        android:entries="@array/provincia"/>
+    <!--       <EditText
+               android:id="@+id/etCorreo"
+               android:textAllCaps="false"
+               android:hint="Correo"
+               android:imeOptions="actionDone"
+               android:layout_width="match_parent"
+               android:maxLength="30"
+               android:textColorHint="@color/marcaTitle"
+               android:paddingStart="10dp"
+               android:layout_below="@+id/tvProvincia"
+               android:paddingEnd="10dp"
+               android:layout_height="40dp"
+               android:layout_marginBottom="15dp"
+               android:textSize="13sp"
+               android:textColor="@color/marcaTitle"
+               android:background="@drawable/edittext_border_setting"/>-->
+  </RelativeLayout>
 
-        <TextView
-            android:id="@+id/tvProvincia"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:paddingBottom="5dp"
-            android:layout_below="@+id/spnDepartamento"
-            android:text="Provincia"
-            android:textColor="#999"
-            android:textSize="14sp"/>
-        <androidx.appcompat.widget.AppCompatSpinner
-            android:id="@+id/spnProvincia"
-            android:paddingTop="1dp"
-            android:paddingBottom="2dp"
-            android:layout_marginTop="4dp"
-            android:layout_marginBottom="4dp"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginStart="10dp"
-            android:background="@drawable/spinner_background_detalle"            android:dropDownWidth="match_parent"
-            android:theme="@style/appCompatSpinnerStyle"
-            android:layout_below="@+id/tvProvincia"
-            android:entries="@array/provincia"/>
-        <!--       <EditText
-                   android:id="@+id/etCorreo"
-                   android:textAllCaps="false"
-                   android:hint="Correo"
-                   android:imeOptions="actionDone"
-                   android:layout_width="match_parent"
-                   android:maxLength="30"
-                   android:textColorHint="@color/marcaTitle"
-                   android:paddingStart="10dp"
-                   android:layout_below="@+id/tvProvincia"
-                   android:paddingEnd="10dp"
-                   android:layout_height="40dp"
-                   android:layout_marginBottom="15dp"
-                   android:textSize="13sp"
-                   android:textColor="@color/marcaTitle"
-                   android:background="@drawable/edittext_border_setting"/>-->
-    </RelativeLayout>
+  <RelativeLayout
+      android:layout_marginBottom="10dp"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:gravity="center"
+      android:paddingTop="20sp"
+      android:paddingRight="10sp"
+      android:paddingLeft="10sp"
+      android:layout_below="@+id/filtro"
 
-    <RelativeLayout
-        android:layout_marginBottom="10dp"
+      >
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:paddingTop="20sp"
-        android:paddingRight="10sp"
-        android:paddingLeft="10sp"
-        android:layout_below="@+id/filtro"
+        android:orientation="horizontal">
 
-        >
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+      <Button
+          android:id="@+id/btnCancelar"
+          android:text="Cancelar"
+          android:gravity="center_horizontal|center_vertical"
+          android:paddingEnd="10dp"
+          android:paddingStart="10dp"
+          android:textColor="@android:color/white"
+          android:textAllCaps="false"
+          android:layout_marginRight="20dp"
+          android:textSize="12sp"
+          android:background="@drawable/btn_ripple_red"
+          android:layout_width="120dp"
+          android:layout_height="30dp"
+          android:layout_weight="1.0"/>
+      <Button
+          android:layout_marginEnd="5dp"
+          android:layout_toRightOf="@+id/btnCancelar"
+          android:id="@+id/btnFiltrar"
+          android:text="Filtrar"
+          android:gravity="center_horizontal|center_vertical"
+          android:paddingEnd="10dp"
 
-        <Button
-            android:id="@+id/btnCancelar"
-            android:text="Cancelar"
-            android:gravity="center_horizontal|center_vertical"
-            android:paddingEnd="10dp"
-            android:paddingStart="10dp"
-            android:textColor="@android:color/white"
-            android:textAllCaps="false"
-            android:layout_marginRight="20dp"
-            android:textSize="12sp"
-            android:background="@drawable/btn_ripple_red"
-            android:layout_width="120dp"
-            android:layout_height="30dp"
-            android:layout_weight="1.0"/>
-        <Button
-            android:layout_marginEnd="5dp"
-            android:layout_toRightOf="@+id/btnCancelar"
-            android:id="@+id/btnFiltrar"
-            android:text="Filtrar"
-            android:gravity="center_horizontal|center_vertical"
-            android:paddingEnd="10dp"
-
-            android:paddingStart="10dp"
-            android:textColor="@android:color/white"
-            android:textAllCaps="false"
-            android:textSize="12sp"
-            android:background="@drawable/btn_login"
-            android:layout_width="120dp"
-            android:layout_height="30dp"
-            android:layout_weight="1.0"/>
-        </LinearLayout>
+          android:paddingStart="10dp"
+          android:textColor="@android:color/white"
+          android:textAllCaps="false"
+          android:textSize="12sp"
+          android:background="@drawable/btn_login"
+          android:layout_width="120dp"
+          android:layout_height="30dp"
+          android:layout_weight="1.0"/>
+    </LinearLayout>
 
 
-    </RelativeLayout>
+  </RelativeLayout>
 
 </RelativeLayout>

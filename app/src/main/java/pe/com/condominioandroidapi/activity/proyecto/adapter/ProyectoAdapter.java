@@ -94,7 +94,7 @@ public class ProyectoAdapter extends RecyclerView.Adapter<ProyectoAdapter.ViewHo
             tvOver.setText(dato.getEstadoObra());
 
             rlDetalle.setOnClickListener((View v) -> {
-                Log.d("aqui", dato.getDireccion());
+                Log.d("aqui", dato.toString());
                 listener.onDetalleItemClickListener(dato);
             });
 
@@ -111,12 +111,11 @@ public class ProyectoAdapter extends RecyclerView.Adapter<ProyectoAdapter.ViewHo
             Bitmap decodedBytelogo = BitmapFactory.decodeByteArray(decodedlogoProyecto, 0, decodedlogoProyecto.length);
             img_title_small.setImageBitmap(decodedBytelogo);
 
-           /* String logoEmpresa = dato.getLogoEmpresa();
+           String logoEmpresa = dato.getLogoEmpresa();
             byte[] decodedlogoEmpresa = Base64.decode(logoEmpresa, Base64.DEFAULT);
             Bitmap decodedBytelogoEmpresa = BitmapFactory.decodeByteArray(decodedlogoEmpresa, 0, decodedlogoEmpresa.length);
             img_title.setScaleType(ImageView.ScaleType.FIT_XY);
             img_title.setImageBitmap(decodedBytelogoEmpresa);
-*/
 
         }
     }

@@ -8,108 +8,108 @@
 
 
     <RelativeLayout
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingLeft="25dp"
-    android:paddingRight="25dp"
-    android:background="@color/marcaPrimary"
-    android:scrollbarAlwaysDrawVerticalTrack="true"
-    >
-    <ImageView
-        android:id="@+id/logo"
-        android:layout_width="60dp"
-        android:background="@drawable/logo"
-        android:layout_marginBottom="20dp"
-        android:layout_marginTop="15dp"
-        android:layout_height="60dp">
-
-    </ImageView>
-    <TextView
-        android:id="@+id/tvEmail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:paddingBottom="5dp"
-        android:layout_below="@+id/logo"
-        android:text="Correo"
-        android:textColor="#999"
-        android:textSize="14sp"/>
-
-    <EditText
-        android:id="@+id/etEmail"
-        android:textAllCaps="false"
-        android:hint="Correo"
-        android:imeOptions="actionDone"
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:maxLength="30"
-        android:focusable="false"
-        android:textColorHint="@color/marcaTitle"
-        android:paddingStart="10dp"
-        android:layout_below="@+id/tvEmail"
-        android:paddingEnd="10dp"
-        android:layout_height="40dp"
-        android:layout_marginBottom="15dp"
-        android:textSize="15sp"
-        android:textColor="@color/marcaHeader"
-        android:background="@drawable/edittext_border_setting"/>
+        android:layout_height="match_parent"
+        android:paddingLeft="25dp"
+        android:paddingRight="25dp"
+        android:background="@color/marcaPrimary"
+        android:scrollbarAlwaysDrawVerticalTrack="true"
+        >
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="60dp"
+            android:background="@drawable/logo"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="15dp"
+            android:layout_height="60dp">
 
-    <TextView
-        android:id="@+id/tvTelefono"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:paddingBottom="5dp"
-        android:layout_below="@+id/etEmail"
-        android:text="Teléfono"
-        android:textColor="@color/marcaHeader"
-        android:textSize="14sp"/>
+        </ImageView>
+        <TextView
+            android:id="@+id/tvEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:paddingBottom="5dp"
+            android:layout_below="@+id/logo"
+            android:text="Correo"
+            android:textColor="#999"
+            android:textSize="14sp"/>
 
-    <EditText
-        android:id="@+id/etTelefono"
-        android:textAllCaps="false"
-        android:hint="Telefono"
-        android:imeOptions="actionDone"
-        android:layout_width="match_parent"
-        android:maxLength="9"
-        android:textColorHint="@color/marcaTitle"
-        android:paddingStart="10dp"
-        android:inputType="number"
-        android:layout_below="@+id/tvTelefono"
-        android:paddingEnd="10dp"
-        android:layout_height="40dp"
-        android:layout_marginBottom="15dp"
-        android:textSize="15sp"
-        android:textColor="@color/marcaTitle"
-        android:background="@drawable/edittext_border_setting"/>
+        <EditText
+            android:id="@+id/etEmail"
+            android:textAllCaps="false"
+            android:hint="Correo"
+            android:imeOptions="actionDone"
+            android:layout_width="match_parent"
+            android:maxLength="30"
+            android:focusable="false"
+            android:textColorHint="@color/marcaTitle"
+            android:paddingStart="10dp"
+            android:layout_below="@+id/tvEmail"
+            android:paddingEnd="10dp"
+            android:layout_height="40dp"
+            android:layout_marginBottom="15dp"
+            android:textSize="15sp"
+            android:textColor="@color/marcaHeader"
+            android:background="@drawable/edittext_border_setting"/>
 
-    <TextView
-        android:id="@+id/tvNuevaContrasena"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:paddingBottom="5dp"
-        android:layout_below="@+id/etTelefono"
-        android:text="Nueva Contraseña"
-        android:textColor="#999"
-        android:textSize="14sp"/>
+        <TextView
+            android:id="@+id/tvTelefono"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:paddingBottom="5dp"
+            android:layout_below="@+id/etEmail"
+            android:text="Teléfono"
+            android:textColor="@color/marcaHeader"
+            android:textSize="14sp"/>
 
-    <EditText
-        android:id="@+id/etNuevaContrasena"
-        android:textAllCaps="false"
-        android:hint="......."
-        android:inputType="textPassword"
-        android:imeOptions="actionDone"
-        android:layout_width="match_parent"
-        android:maxLength="30"
-        android:textColorHint="@color/marcaTitle"
-        android:paddingStart="10dp"
-        android:layout_below="@+id/tvNuevaContrasena"
-        android:paddingEnd="10dp"
-        android:layout_height="40dp"
-        android:textSize="15sp"
-        android:textColor="@color/marcaTitle"
-        android:background="@drawable/edittext_border_setting"/>
+        <EditText
+            android:id="@+id/etTelefono"
+            android:textAllCaps="false"
+            android:hint="Telefono"
+            android:imeOptions="actionDone"
+            android:layout_width="match_parent"
+            android:maxLength="9"
+            android:textColorHint="@color/marcaTitle"
+            android:paddingStart="10dp"
+            android:inputType="number"
+            android:layout_below="@+id/tvTelefono"
+            android:paddingEnd="10dp"
+            android:layout_height="40dp"
+            android:layout_marginBottom="15dp"
+            android:textSize="15sp"
+            android:textColor="@color/marcaTitle"
+            android:background="@drawable/edittext_border_setting"/>
+
+        <TextView
+            android:id="@+id/tvNuevaContrasena"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:paddingBottom="5dp"
+            android:layout_below="@+id/etTelefono"
+            android:text="Nueva Contraseña"
+            android:textColor="#999"
+            android:textSize="14sp"/>
+
+        <EditText
+            android:id="@+id/etNuevaContrasena"
+            android:textAllCaps="false"
+            android:hint="......."
+            android:inputType="textPassword"
+            android:imeOptions="actionDone"
+            android:layout_width="match_parent"
+            android:maxLength="30"
+            android:textColorHint="@color/marcaTitle"
+            android:paddingStart="10dp"
+            android:layout_below="@+id/tvNuevaContrasena"
+            android:paddingEnd="10dp"
+            android:layout_height="40dp"
+            android:textSize="15sp"
+            android:textColor="@color/marcaTitle"
+            android:background="@drawable/edittext_border_setting"/>
         <TextView
             android:id="@+id/tvAdvertencia"
             android:layout_width="wrap_content"
@@ -121,230 +121,230 @@
             />
 
 
-    <TextView
-        android:id="@+id/tvConfirmarContrasena"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:paddingBottom="5dp"
-        android:layout_below="@+id/tvAdvertencia"
-        android:text="Confirmar Contraseña"
-        android:textColor="#999"
-        android:textSize="14sp"/>
-
-    <EditText
-        android:id="@+id/etConfirmarContrasena"
-        android:textAllCaps="false"
-        android:hint="......."
-        android:imeOptions="actionDone"
-        android:layout_width="match_parent"
-        android:maxLength="30"
-        android:inputType="textPassword"
-        android:textColorHint="@color/marcaTitle"
-        android:paddingStart="10dp"
-        android:layout_below="@+id/tvConfirmarContrasena"
-        android:paddingEnd="10dp"
-        android:layout_height="40dp"
-        android:layout_marginBottom="15dp"
-        android:textSize="15sp"
-        android:textColor="@color/marcaTitle"
-        android:background="@drawable/edittext_border_setting"/>
-
-    <RelativeLayout
-        android:id="@+id/rlNotificacion"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:layout_below="@+id/etConfirmarContrasena">
-
         <TextView
-            android:id="@+id/tvNotificaciones"
+            android:id="@+id/tvConfirmarContrasena"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:paddingBottom="5dp"
-            android:text="Notificaciones"
+            android:layout_below="@+id/tvAdvertencia"
+            android:text="Confirmar Contraseña"
             android:textColor="#999"
             android:textSize="14sp"/>
 
-       <RelativeLayout
+        <EditText
+            android:id="@+id/etConfirmarContrasena"
+            android:textAllCaps="false"
+            android:hint="......."
+            android:imeOptions="actionDone"
+            android:layout_width="match_parent"
+            android:maxLength="30"
+            android:inputType="textPassword"
+            android:textColorHint="@color/marcaTitle"
+            android:paddingStart="10dp"
+            android:layout_below="@+id/tvConfirmarContrasena"
+            android:paddingEnd="10dp"
+            android:layout_height="40dp"
+            android:layout_marginBottom="15dp"
+            android:textSize="15sp"
+            android:textColor="@color/marcaTitle"
+            android:background="@drawable/edittext_border_setting"/>
 
-           android:paddingRight="10dp"
-           android:paddingLeft="10dp"
-           android:layout_below="@+id/tvNotificaciones"
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:background="@drawable/border_corners_list_document">
-
-        <TextView
-            android:id="@+id/tvPush"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:paddingBottom="5dp"
-            android:text="Push"
-            android:textColor="#999"
-            android:textSize="14sp"/>
-
-        <Switch
-            android:id="@+id/swPush"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_marginTop="6dp"
-            android:layout_toEndOf="@+id/tvPush"
-
-            tools:checked="false" />
-        <TextView
-            android:id="@+id/tvSMS"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:paddingBottom="5dp"
-            android:text="SMS"
-            android:textColor="#999"
-            android:layout_below="@+id/tvPush"
-            android:textSize="14sp"/>
-        <Switch
-            android:id="@+id/swSMS"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="10dp"
-            android:layout_below="@+id/swPush"
-            android:layout_toEndOf="@+id/tvSMS"/>
-        <TextView
-            android:id="@+id/tvCorreo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:paddingBottom="5dp"
-            android:layout_below="@+id/tvSMS"
-            android:text="Correo"
-            android:textColor="#999"
-            android:textSize="14sp"/>
-        <Switch
-            android:id="@+id/swCorreo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toEndOf="@+id/tvCorreo"
-            android:layout_below="@+id/swSMS"
-            android:layout_marginTop="10dp"
-
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-       />
-       </RelativeLayout>
-
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:id="@+id/rlRedes"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:layout_below="@+id/rlNotificacion">
-
-        <TextView
-            android:id="@+id/tvRedes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:paddingBottom="5dp"
-            android:text="Redes Sociales"
-            android:textColor="#999"
-            android:textSize="14sp"/>
         <RelativeLayout
+            android:id="@+id/rlNotificacion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_below="@+id/etConfirmarContrasena">
 
-            android:paddingRight="10dp"
-            android:paddingLeft="10dp"
-            android:layout_below="@+id/tvRedes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/border_corners_list_document">
-        <TextView
-            android:id="@+id/tvFacebook"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:paddingBottom="5dp"
-            android:text="Facebook"
-            android:textColor="#999"
-            android:textSize="14sp"/>
-            <com.facebook.login.widget.LoginButton
-                xmlns:fb="http://schemas.Android.com/apk/res-auto"
-                android:layout_below="@id/tvFacebook"
-                android:id="@+id/login_button"
+            <TextView
+                android:id="@+id/tvNotificaciones"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="30dp"
-                android:layout_marginBottom="30dp"
-                style="@style/FacebookLoginButton"
-                fb:login_text="Hola"
-                android:visibility="gone"
-                />
-            <com.google.android.gms.common.SignInButton
+                android:layout_marginTop="10dp"
+                android:paddingBottom="5dp"
+                android:text="Notificaciones"
+                android:textColor="#999"
+                android:textSize="14sp"/>
+
+            <RelativeLayout
+
+                android:paddingRight="10dp"
+                android:paddingLeft="10dp"
+                android:layout_below="@+id/tvNotificaciones"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/tvFacebook"
-                android:id="@+id/googlesing"
-                android:visibility="gone"
-                />
-            <!-- style="@style/FacebookLoginButton"
--->
-            <ImageView
-                android:id="@+id/ivFacebook"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
+                android:background="@drawable/border_corners_list_document">
 
-                android:textAllCaps="false"
-                android:layout_alignParentEnd="true"
-                android:layout_marginTop="15dp"
-                android:background="@drawable/ic_vincular"
-                android:contentDescription="TODO" />
+                <TextView
+                    android:id="@+id/tvPush"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:paddingBottom="5dp"
+                    android:text="Push"
+                    android:textColor="#999"
+                    android:textSize="14sp"/>
 
-        <TextView
-            android:id="@+id/tvGmail"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:paddingBottom="5dp"
-            android:text="Gmail"
-            android:textColor="#999"
-            android:layout_below="@+id/tvFacebook"
-            android:textSize="14sp"/>
-        <ImageView
-            android:id="@+id/ivGmail"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="10dp"
-            android:layout_below="@+id/ivFacebook"
-            android:background="@drawable/ic_vincular"/>
+                <Switch
+                    android:id="@+id/swPush"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="6dp"
+                    android:layout_toEndOf="@+id/tvPush"
+
+                    tools:checked="false" />
+                <TextView
+                    android:id="@+id/tvSMS"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:paddingBottom="5dp"
+                    android:text="SMS"
+                    android:textColor="#999"
+                    android:layout_below="@+id/tvPush"
+                    android:textSize="14sp"/>
+                <Switch
+                    android:id="@+id/swSMS"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="10dp"
+                    android:layout_below="@+id/swPush"
+                    android:layout_toEndOf="@+id/tvSMS"/>
+                <TextView
+                    android:id="@+id/tvCorreo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:paddingBottom="5dp"
+                    android:layout_below="@+id/tvSMS"
+                    android:text="Correo"
+                    android:textColor="#999"
+                    android:textSize="14sp"/>
+                <Switch
+                    android:id="@+id/swCorreo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@+id/tvCorreo"
+                    android:layout_below="@+id/swSMS"
+                    android:layout_marginTop="10dp"
+
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    />
+            </RelativeLayout>
 
         </RelativeLayout>
-    </RelativeLayout>
 
-    <RelativeLayout
-        android:layout_below="@id/rlRedes"
-        android:layout_width="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="90dp"
-        android:layout_height="wrap_content">
-
-        <Button
-            android:id="@+id/btnGuardar"
-            android:layout_width="match_parent"
+        <RelativeLayout
+            android:id="@+id/rlRedes"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Guardar"
-            android:textColor="#fff"
-            android:background="@drawable/btn_guardar"
-            />
-    </RelativeLayout>
+            android:layout_marginTop="15dp"
+            android:layout_below="@+id/rlNotificacion">
+
+            <TextView
+                android:id="@+id/tvRedes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:paddingBottom="5dp"
+                android:text="Redes Sociales"
+                android:textColor="#999"
+                android:textSize="14sp"/>
+            <RelativeLayout
+
+                android:paddingRight="10dp"
+                android:paddingLeft="10dp"
+                android:layout_below="@+id/tvRedes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/border_corners_list_document">
+                <TextView
+                    android:id="@+id/tvFacebook"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:paddingBottom="5dp"
+                    android:text="Facebook"
+                    android:textColor="#999"
+                    android:textSize="14sp"/>
+                <com.facebook.login.widget.LoginButton
+                    xmlns:fb="http://schemas.Android.com/apk/res-auto"
+                    android:layout_below="@id/tvFacebook"
+                    android:id="@+id/login_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginBottom="30dp"
+                    style="@style/FacebookLoginButton"
+                    fb:login_text="Hola"
+                    android:visibility="gone"
+                    />
+                <com.google.android.gms.common.SignInButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tvFacebook"
+                    android:id="@+id/googlesing"
+                    android:visibility="gone"
+                    />
+                <!-- style="@style/FacebookLoginButton"
+    -->
+                <ImageView
+                    android:id="@+id/ivFacebook"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+
+                    android:textAllCaps="false"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="15dp"
+                    android:background="@drawable/ic_vincular"
+                    android:contentDescription="TODO" />
+
+                <TextView
+                    android:id="@+id/tvGmail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:paddingBottom="5dp"
+                    android:text="Gmail"
+                    android:textColor="#999"
+                    android:layout_below="@+id/tvFacebook"
+                    android:textSize="14sp"/>
+                <ImageView
+                    android:id="@+id/ivGmail"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="10dp"
+                    android:layout_below="@+id/ivFacebook"
+                    android:background="@drawable/ic_vincular"/>
+
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_below="@id/rlRedes"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="90dp"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/btnGuardar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Guardar"
+                android:textColor="#fff"
+                android:background="@drawable/btn_guardar"
+                />
+        </RelativeLayout>
         <ProgressBar
             android:id="@+id/pgbSetting"
             android:layout_width="wrap_content"
@@ -352,6 +352,6 @@
             android:layout_centerVertical="true"
             android:layout_centerHorizontal="true"/>
 
-</RelativeLayout>
+    </RelativeLayout>
 
 </androidx.core.widget.NestedScrollView>

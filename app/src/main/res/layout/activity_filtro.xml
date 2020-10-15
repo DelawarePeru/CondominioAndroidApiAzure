@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:excludeFromRecents="true"
     android:layout_height="wrap_content"
     android:layout_width="match_parent"
@@ -23,7 +20,7 @@
             android:textColor="@android:color/black"
             android:textSize="14sp"
             android:textStyle="bold"
-            android:text="Filtro avanzado"/>
+            android:text="@string/filtro_avanzado"/>
 
         <TextView
             android:id="@+id/tvDepartamento"
@@ -32,7 +29,7 @@
             android:layout_marginTop="10dp"
             android:paddingBottom="5dp"
             android:layout_below="@+id/formTi"
-            android:text="Departamento"
+            android:text="@string/departamento"
             android:textColor="#999"
             android:textSize="14sp"/>
 
@@ -47,7 +44,6 @@
             android:layout_marginStart="10dp"
             android:background="@drawable/edittext_border_setting"            android:dropDownWidth="match_parent"
             android:theme="@style/appCompatSpinnerStyle"
-            android:layout_weight="1"
             android:layout_below="@+id/tvDepartamento"
             android:entries="@array/departamento"/>
 
@@ -75,7 +71,7 @@
             android:layout_marginTop="10dp"
             android:paddingBottom="5dp"
             android:layout_below="@+id/spnDepartamento"
-            android:text="Provincia"
+            android:text="@string/provincia"
             android:textColor="#999"
             android:textSize="14sp"/>
         <androidx.appcompat.widget.AppCompatSpinner
@@ -89,7 +85,6 @@
             android:layout_marginStart="10dp"
             android:background="@drawable/edittext_border_setting"            android:dropDownWidth="match_parent"
             android:theme="@style/appCompatSpinnerStyle"
-            android:layout_weight="1"
             android:layout_below="@+id/tvProvincia"
             android:entries="@array/provincia"/>
  <!--       <EditText
@@ -118,18 +113,11 @@
         android:paddingBottom="0dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <RelativeLayout
-            android:layout_marginBottom="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
 
-            >
             <Button
                 android:id="@+id/btnEnviar"
-                android:text="Enviar"
+                android:text="@string/enviar"
                 android:gravity="center_horizontal|center_vertical"
-
                 android:textColor="@android:color/white"
                 android:textAllCaps="false"
                 android:textSize="16sp"
@@ -138,7 +126,6 @@
                 android:layout_height="wrap_content"
                 />
 
-        </RelativeLayout>
     </RelativeLayout>
 
 </RelativeLayout>

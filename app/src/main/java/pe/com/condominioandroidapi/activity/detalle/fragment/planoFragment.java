@@ -48,6 +48,8 @@ public class planoFragment  extends BaseFragment {
     Button btnComun;
     @BindView(R.id.linearLayout)
     LinearLayout linearLayout;
+    @BindView(R.id.menuTipo)
+    LinearLayout menuTipo;
     @BindView(R.id.oculto)
     LinearLayout oculto;
     @BindView(R.id.textView)
@@ -55,15 +57,22 @@ public class planoFragment  extends BaseFragment {
     Integer ROWS = 1;
     Integer COLUMNS = 3;
     TableLayout tableLayout;
+    TableLayout tableTipo;
+
     detalleViewModel viewModel;
     String id_catalogo;
     List<String> lista;
     List<Integer> listaId;
     List<Integer> listaEstados;
+    List<String> nombreTipo;
+    List<Integer> idTipo;
     TableRow row;
+    TableRow tipoMenu;
+    Button btnTipoMenu;
+
     Button bt;
     Integer ids;
-    Integer idTipo;
+    //Integer idTipo;
 
     public View onCreateView(LayoutInflater inflater,
                              ViewGroup container,
@@ -72,10 +81,8 @@ public class planoFragment  extends BaseFragment {
         View view =  inflater.inflate(R.layout.plano_fragmento,
                 container, false);
        // vpPhoto = view.findViewById(R.id.vpPhoto);
-         btnFlat = view.findViewById(R.id.btnFlat);
-        btnDuplex = view.findViewById(R.id.btnDuplex);
-        btnComun= view.findViewById(R.id.btnComun);
-                linearLayout = view.findViewById(R.id.linearLayout);
+        linearLayout = view.findViewById(R.id.linearLayout);
+        menuTipo = view.findViewById(R.id.menuTipo);
         oculto = view.findViewById(R.id.oculto);
 
         linearLayout.setWeightSum(3);
@@ -92,15 +99,18 @@ public class planoFragment  extends BaseFragment {
     public void initializeObjects() {
 
         viewModel.getGridMutableLiveData().observeForever(detalle -> {
+            linearLayout.removeAllViews();
+           // oculto.setVisibility(View.GONE);
+
             lista = new ArrayList<>();
             listaId = new ArrayList<>();
             listaEstados = new ArrayList<>();
             for(int i =0; i<detalle.size() ;i++)
             {
 
-                String inmueble =  detalle.get(i).getCodigoInmueble();
+                String inmueble =  detalle.get(i).getNombre();
                 Integer id =  detalle.get(i).getIdInmueble();
-                Integer estado =  detalle.get(i).getEstado();
+                Integer estado =  detalle.get(i).getEstadoVenta();
 
                 lista.add(inmueble);
                 listaId.add(id);
@@ -108,8 +118,80 @@ public class planoFragment  extends BaseFragment {
                 Log.d("listasdeinm", lista.toString());
             }
 
+            createTable(ROWS,COLUMNS,lista,listaId);
+        });
+
+        viewModel.getTipoInmuebleMutableLiveData().observeForever(detalle -> {
+            idTipo = new ArrayList<>();
+            nombreTipo = new ArrayList<>();
+            for(int i =0; i<detalle.size() ;i++)
+            {
+
+                String tipoInmueble =  detalle.get(i).getTipoInmueble();
+                Integer idCatalogo =  detalle.get(i).getIdCatalogo();
+                Integer idTipoInmueble =  detalle.get(i).getIdTipoInmueble();
+
+                idTipo.add(idTipoInmueble);
+                nombreTipo.add(tipoInmueble);
+            }
+
+            createMenu();
 
         });
+
+
+    }
+    public void createMenu()
+    {
+        tableTipo = new TableLayout(getContext());
+        tableTipo.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT));
+        int a = 0;
+        for (int i=0; i<1 ;i++) {
+
+            tipoMenu = new TableRow(getContext());
+            tipoMenu.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+                    ViewGroup.LayoutParams.WRAP_CONTENT));
+            for (int  j = 0 ; j<idTipo.size() ; j++) {
+                if(idTipo.size()>a) {
+                    btnTipoMenu = new Button(getActivity());
+
+                    btnTipoMenu.setLayoutParams(new TableRow.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
+                            ViewGroup.LayoutParams.WRAP_CONTENT, 1f));
+                    btnTipoMenu.setText(nombreTipo.get(a));
+                    btnTipoMenu.setId(idTipo.get(a));
+                    btnTipoMenu.setBackgroundColor(getResources().getColor(R.color.colorRipple));
+                    btnTipoMenu.setTextColor(getResources().getColor(R.color.marcaTitle));
+                    btnTipoMenu.setClickable(true);
+
+                    tipoMenu.addView(btnTipoMenu);
+
+
+                    btnTipoMenu.setOnClickListener(new View.OnClickListener() {
+                        @RequiresApi(api = Build.VERSION_CODES.O)
+                        public void onClick(View v) {
+
+                            if( ((Button) v).isClickable() ) {
+                                Integer idTipo = ((Button) v).getId();
+
+                                Log.d("planogrid", idTipo.toString());
+                                viewModel.requestGrid(Integer.parseInt(id_catalogo),idTipo);
+
+
+
+                            }
+
+                        }
+
+
+                    });
+
+                    a++;
+                }
+                else{break;}
+            }
+            tableTipo.addView(tipoMenu);
+        }
+        menuTipo.addView(tableTipo);
 
     }
     public void createTable(Integer rows, Integer cols, List<String> letter, List<Integer> id) {
@@ -132,7 +214,7 @@ public class planoFragment  extends BaseFragment {
                     bt.setId(id.get(a));
                     bt.setBackgroundColor(getResources().getColor(R.color.marcaPrimary));
                     bt.setTextColor(getResources().getColor(R.color.marcaTitle));
-                    if(listaEstados.get(a)==1)
+                    if(listaEstados.get(a)==0)
                         bt.setClickable(true);
                     else {
                         bt.setOnTouchListener((v, event) -> false);
@@ -191,8 +273,6 @@ public class planoFragment  extends BaseFragment {
         transaction.commit();
     }
 
-
-
     @Override
     public void initializeObservers() {
 
@@ -204,10 +284,10 @@ public class planoFragment  extends BaseFragment {
     public void setupViews() {
 
     }
-
+/*
     @OnClick(R.id.btnFlat)
     public void onClickBtnOk() {
-        idTipo = 3;
+       // idTipo = 3;
         btnFlat.setBackground(getResources().getDrawable(R.drawable.btn_pressed));
         btnFlat.setBackgroundResource(R.color.btnLogin);
         btnDuplex.setBackgroundResource(R.color.colorRipple);
@@ -234,8 +314,8 @@ public class planoFragment  extends BaseFragment {
         /*if( !listaId.isEmpty() || !listaId.isEmpty()) {
             createTable(ROWS, COLUMNS, lista, listaId);
         }*/
-    }
-    @OnClick(R.id.btnComun)
+    //}
+    /*@OnClick(R.id.btnComun)
     public void onClickBtnComun() {
         btnComun.setBackground(getResources().getDrawable(R.drawable.btn_pressed));
         btnDuplex.setBackgroundResource(R.color.colorRipple);
@@ -245,16 +325,15 @@ public class planoFragment  extends BaseFragment {
 
         linearLayout.removeAllViews();
         oculto.setVisibility(View.GONE);
-
-        /*if( !listaId.isEmpty() || !listaId.isEmpty()) {
-            createTable(ROWS, COLUMNS, lista, listaId);
-         */
     }
+   */
     @Override
     public void onResume()
     {
         super.onResume();
-        viewModel.requestGrid(Integer.parseInt(id_catalogo),3);
+        viewModel.requestTipoInmueble(Integer.parseInt(id_catalogo));
+
+       //viewModel.requestGrid(Integer.parseInt(id_catalogo),3);
     }
 
 }

@@ -4,35 +4,30 @@ import com.google.gson.annotations.SerializedName;
 
 public class PlanoGridResponse {
 
-    @SerializedName("codigoInmueble")
-    private String codigoInmueble;
+    @SerializedName("nombre")
+    private String nombre;
 
     @SerializedName("idInmueble")
     private Integer idInmueble;
 
-    @SerializedName("idCatalogoPlano")
-    private Integer idCatalogoPlano;
+    @SerializedName("codigoInmueble")
+    private String codigoInmueble;
+
+    @SerializedName("estadoVenta")
+    private Integer estadoVenta;
+
+    @SerializedName("idProyecto")
+    private Integer idProyecto;
 
     @SerializedName("idTipoInmueble")
     private Integer idTipoInmueble;
 
-    @SerializedName("estado")
-    private Integer estado;
-
-    public Integer getEstado() {
-        return estado;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setEstado(Integer estado) {
-        this.estado = estado;
-    }
-
-    public String getCodigoInmueble() {
-        return codigoInmueble;
-    }
-
-    public void setCodigoInmueble(String codigoInmueble) {
-        this.codigoInmueble = codigoInmueble;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public Integer getIdInmueble() {
@@ -43,12 +38,28 @@ public class PlanoGridResponse {
         this.idInmueble = idInmueble;
     }
 
-    public Integer getIdCatalogoPlano() {
-        return idCatalogoPlano;
+    public String getCodigoInmueble() {
+        return codigoInmueble;
     }
 
-    public void setIdCatalogoPlano(Integer idCatalogoPlano) {
-        this.idCatalogoPlano = idCatalogoPlano;
+    public void setCodigoInmueble(String codigoInmueble) {
+        this.codigoInmueble = codigoInmueble;
+    }
+
+    public Integer getEstadoVenta() {
+        return estadoVenta;
+    }
+
+    public void setEstadoVenta(Integer estadoVenta) {
+        this.estadoVenta = estadoVenta;
+    }
+
+    public Integer getIdProyecto() {
+        return idProyecto;
+    }
+
+    public void setIdProyecto(Integer idProyecto) {
+        this.idProyecto = idProyecto;
     }
 
     public Integer getIdTipoInmueble() {

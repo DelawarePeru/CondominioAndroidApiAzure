@@ -48,23 +48,28 @@ public class Constant {
 
     private static SharedPreferences mPreferences;
 
-       // static final String API_BASE_URL = "http://192.168.250.13/SiteQA/Condominio/ws/api/";
-        //privada
-    static final String API_BASE_URL ="http://143.208.132.83/SiteQA/Condominio/ws/api/";
-    //static final String API_BASE_URL_LOGIN ="http://10.0.2.2:52399/";
-    static final String API_BASE_URL_LOGIN ="http://143.208.132.83/SiteQA/Condominio/front/";
+    // static final String API_BASE_URL = "http://192.168.250.13/SiteQA/Condominio/ws/api/";
+    //privada
+    //static final String API_BASE_URL ="https://condominiosservices-cert.azurewebsites.net/";\Condominios-QA\Services-Cert
+
+  //  static final String API_BASE_URL ="http://143.208.132.83:81/Condominios-Dev/Services/api/";
+    static final String API_BASE_URL ="http://143.208.132.83:81/Condominios-QA/Services/api/";
+
+   // static final String API_BASE_URL_LOGIN ="http://143.208.132.83:81/Condominios-Dev/Web/";
+    static final String API_BASE_URL_LOGIN ="http://143.208.132.83:81/Condominios-QA/Web/";
 
 
-    //  "http://10.0.2.2/Delaware.Desarrollo.Condominio.Services/api/";
 
 
-            //"http://192.168.250.190:80/Delaware.Desarrollo.Condominio.Services/api/";
-
-        private static final String PREF_FILE_NAME = "pe.com.condominioandroidapi.preferences";
-        public static final String KEY_ACCESS_TOKEN = "Authorization";
-        public static final String EMAIL = "EMAIL";
-        public static final String ID_PERSONA = "ID_PERSONA";
-         public static final String NOMBRE = "NOMBRE";
+    private static final String PREF_FILE_NAME = "pe.com.condominioandroidapi.preferences";
+    public static final String KEY_ACCESS_TOKEN = "Authorization";
+    public static final String EMAIL = "EMAIL";
+    public static final String ID_PERSONA = "ID_PERSONA";
+    public static final String NOMBRE = "NOMBRE";
+    public static final String TELEFONO = "TELEFONO";
+    public static final String ID_USER = "ID_USER";
+    public static final String COORDENADA_X = "COORDENADA_X";
+    public static final String COORDENADA_Y = "COORDENADA_Y";
 
 
 

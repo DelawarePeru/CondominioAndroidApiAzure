@@ -32,6 +32,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import pe.com.condominioandroidapi.R;
 import pe.com.condominioandroidapi.activity.Inmueble.ListaInmueblesViewModel;
+import pe.com.condominioandroidapi.util.Constant;
 import pe.com.condominioandroidapi.util.basecomponent.BaseActivity;
 
 public class formularioActivity extends BaseActivity implements GoogleApiClient.ConnectionCallbacks {
@@ -101,8 +102,20 @@ public class formularioActivity extends BaseActivity implements GoogleApiClient.
     }
     @Override
     public void initializeObjects() {
+        if(Constant.get(Constant.NOMBRE)!="")
+        {
+            etNombre.setText(Constant.get(Constant.NOMBRE));
+        }
+        if(Constant.get(Constant.TELEFONO)!="")
+        {
+            etTelefono.setText(Constant.get(Constant.TELEFONO));
 
+        }
+        if(Constant.get(Constant.EMAIL)!="")
+        {
+            etCorreo.setText(Constant.get(Constant.EMAIL));
 
+        }
 
     }
 
@@ -129,7 +142,7 @@ public class formularioActivity extends BaseActivity implements GoogleApiClient.
 
         }
         else {
-           Toast.makeText(this,"Completar los datos.",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,"Completar los datos.",Toast.LENGTH_SHORT).show();
 
         }
 

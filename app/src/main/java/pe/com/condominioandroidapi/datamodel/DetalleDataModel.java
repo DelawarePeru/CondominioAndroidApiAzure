@@ -16,6 +16,7 @@ import pe.com.condominioandroidapi.entities.LugarResponse;
 import pe.com.condominioandroidapi.entities.Plano;
 import pe.com.condominioandroidapi.entities.PlanoGridResponse;
 import pe.com.condominioandroidapi.entities.PostResponse;
+import pe.com.condominioandroidapi.entities.TipoInmuebleResponse;
 import pe.com.condominioandroidapi.service.PostService;
 import pe.com.condominioandroidapi.util.Constant;
 import pe.com.condominioandroidapi.util.ServiceGenerator;
@@ -28,6 +29,8 @@ public class DetalleDataModel {
     private MutableLiveData<List<LugarResponse>> lugarMutableLiveData;
     private MutableLiveData<List<GaleriaResponse>> galeriaMutableLiveData;
     private MutableLiveData<List<PlanoGridResponse>> gridMutableLiveData;
+    private MutableLiveData<List<TipoInmuebleResponse>> tipoMutableLiveData;
+
     private MutableLiveData<List<Plano>> planoMutableLiveData;
     private MutableLiveData<List<ContactoProyecto>> contactoMutableLiveData;
 
@@ -41,8 +44,12 @@ public class DetalleDataModel {
         gridMutableLiveData = new MutableLiveData<>();
         planoMutableLiveData = new MutableLiveData<>();
         contactoMutableLiveData = new MutableLiveData<>();
-    }
+        tipoMutableLiveData = new MutableLiveData<>();
 
+    }
+    public MutableLiveData<List<TipoInmuebleResponse>> getTipoMutableLiveData() {
+        return tipoMutableLiveData;
+    }
     public MutableLiveData<List<DetalleResponse>> getDetalleMutableLiveData() {
         return detalleMutableLiveData;
     }
@@ -73,7 +80,7 @@ public class DetalleDataModel {
         call.enqueue(new Callback<PostResponse<DetalleResponse>>() {
             @Override
             public void onResponse(Call<PostResponse<DetalleResponse>> call, Response<PostResponse<DetalleResponse>> response) {
-                Log.d("response" , response.body().getData().toString());
+                Log.d("detallecatalogo" , response.body().getData().get(0).toString());
                 detalleMutableLiveData.setValue(response.body().getData());
             }
 
@@ -120,6 +127,25 @@ public class DetalleDataModel {
 
             @Override
             public void onFailure(Call<PostResponse<GaleriaResponse>> call, Throwable t) {
+
+            }
+        });
+
+    }
+    public void requestTipoInmueble(Integer idCatalogo)
+    {
+        PostService service = ServiceGenerator
+                .createService(PostService.class, Constant.get(Constant.KEY_ACCESS_TOKEN));
+        Call<PostResponse<TipoInmuebleResponse>> call = service.TipoInmueble(builJsonTipo(idCatalogo));
+
+        call.enqueue(new Callback<PostResponse<TipoInmuebleResponse>>() {
+            @Override
+            public void onResponse(Call<PostResponse<TipoInmuebleResponse>> call, Response<PostResponse<TipoInmuebleResponse>> response) {
+                tipoMutableLiveData.setValue(response.body().getData());
+            }
+
+            @Override
+            public void onFailure(Call<PostResponse<TipoInmuebleResponse>> call, Throwable t) {
 
             }
         });
@@ -227,6 +253,18 @@ public class DetalleDataModel {
         try {
             jo.addProperty("idCatalogo", idCatalogo);
             jo.addProperty("idTipoInmueble", idTipo);
+
+        } catch (Exception ex) {
+
+        }
+        Log.d("json", jo.toString());
+        return jo;
+    }
+
+    private JsonObject builJsonTipo(Integer idCatalogo) {
+        JsonObject jo = new JsonObject();
+        try {
+            jo.addProperty("idCatalogo", idCatalogo);
 
         } catch (Exception ex) {
 

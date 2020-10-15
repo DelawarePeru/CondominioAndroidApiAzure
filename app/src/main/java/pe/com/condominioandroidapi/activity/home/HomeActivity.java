@@ -229,6 +229,7 @@ public class HomeActivity extends AppCompatActivity {
         Constant.set(Constant.ID_PERSONA,"");
         Constant.set(Constant.EMAIL,"");
         Constant.set(Constant.NOMBRE,"");
+        Constant.set(Constant.TELEFONO,"");
         startActivity(getIntent());
         finish();
 

@@ -46,6 +46,9 @@ public class InmuebleResponse {
     @SerializedName("archivoPerfil")
     private String archivoPerfil;
 
+    @SerializedName("logoEmpresa")
+    private String logoEmpresa;
+
     public int getIdProyecto() {
         return idProyecto;
     }
@@ -124,5 +127,13 @@ public class InmuebleResponse {
 
     public void setArchivoPerfil(String archivoPerfil) {
         this.archivoPerfil = archivoPerfil;
+    }
+
+    public String getLogoEmpresa() {
+        return logoEmpresa;
+    }
+
+    public void setLogoEmpresa(String logoEmpresa) {
+        this.logoEmpresa = logoEmpresa;
     }
 }

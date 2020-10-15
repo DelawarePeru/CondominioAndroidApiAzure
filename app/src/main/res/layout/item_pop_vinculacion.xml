@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:excludeFromRecents="true"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:background="@drawable/border_pop_up"
+    android:layout_margin="2dp">
+    <RelativeLayout
+        android:id="@+id/rlVincular"
+        android:layout_width="match_parent"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:paddingBottom="5dp"
+        android:paddingTop="20dp"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/formTi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:text="Vincular propiedad"/>
+
+        <TextView
+            android:id="@+id/tvNombre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:paddingBottom="5dp"
+            android:layout_below="@+id/formTi"
+            android:text="Código de activación"
+            android:textColor="#999"
+            android:textSize="14sp"/>
+
+        <EditText
+            android:id="@+id/etNombre"
+            android:textAllCaps="false"
+            android:imeOptions="actionDone"
+            android:layout_width="match_parent"
+            android:maxLength="30"
+            android:textColorHint="@color/marcaHeader"
+            android:paddingStart="10dp"
+            android:layout_below="@+id/tvNombre"
+            android:paddingEnd="10dp"
+            android:layout_height="40dp"
+            android:layout_marginBottom="15dp"
+            android:textSize="13sp"
+            android:textColor="@color/marcaTitle"
+            android:background="@drawable/edittext_border_setting"/>
+
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_marginBottom="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_below="@+id/rlVincular"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:weightSum="1">
+
+
+        <Button
+            android:id="@+id/btnCancelarEnvio"
+            android:text="Cancelar"
+            android:gravity="center_horizontal|center_vertical"
+            android:textColor="@android:color/white"
+            android:textAllCaps="false"
+            android:layout_marginEnd="20dp"
+            android:textSize="12sp"
+            android:background="@drawable/btn_ripple_red"
+            android:layout_width="match_parent"
+            android:layout_weight="0.5"
+            android:layout_height="30dp"/>
+        <Button
+
+            android:layout_toEndOf="@+id/btnCancelarEnvio"
+            android:id="@+id/btnAceptarEnvio"
+            android:text="Vincular"
+            android:gravity="center_horizontal|center_vertical"
+
+            android:textColor="@android:color/white"
+            android:textAllCaps="false"
+            android:textSize="12sp"
+            android:background="@drawable/btn_ripple_blue"
+            android:layout_width="match_parent"
+            android:layout_weight="0.5"
+            android:layout_height="30dp"/>
+
+        </LinearLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

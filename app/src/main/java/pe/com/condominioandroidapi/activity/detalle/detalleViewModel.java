@@ -17,12 +17,15 @@ import pe.com.condominioandroidapi.entities.GaleriaResponse;
 import pe.com.condominioandroidapi.entities.LugarResponse;
 import pe.com.condominioandroidapi.entities.Plano;
 import pe.com.condominioandroidapi.entities.PlanoGridResponse;
+import pe.com.condominioandroidapi.entities.TipoInmuebleResponse;
 import pe.com.condominioandroidapi.util.Helper;
 import pe.com.condominioandroidapi.util.basecomponent.BaseViewModel;
 
 public class detalleViewModel extends BaseViewModel {
         DetalleDataModel datamodel;
     private MutableLiveData<List<DetalleResponse>> detalleMutableLiveData;
+    private MutableLiveData<List<TipoInmuebleResponse>> tipoMutableLiveData;
+
     private MutableLiveData<List<LugarResponse>> lugarMutableLiveData;
     private MutableLiveData<List<GaleriaResponse>> galeriaMutableLiveData;
     private MutableLiveData<List<PlanoGridResponse>> gridMutableLiveData;
@@ -40,6 +43,7 @@ public class detalleViewModel extends BaseViewModel {
         galeriaMutableLiveData = new MutableLiveData<>();
         planoMutableLiveData = new MutableLiveData<>();
         contactoMutableLiveData = new MutableLiveData<>();
+        tipoMutableLiveData= new MutableLiveData<>();
 
         setupObservers();
     }
@@ -61,7 +65,14 @@ public class detalleViewModel extends BaseViewModel {
                 detalleMutableLiveData.setValue(pro);
             }
         });
+        datamodel.getTipoMutableLiveData().observeForever(new Observer<List<TipoInmuebleResponse>>() {
+            @Override
+            public void onChanged(List<TipoInmuebleResponse> pro) {
+                onRetrieveDataFinish();
 
+                tipoMutableLiveData.setValue(pro);
+            }
+        });
         datamodel.getLugarMutableLiveData().observeForever(new Observer<List<LugarResponse>>() {
             @Override
             public void onChanged(List<LugarResponse> pro) {
@@ -108,6 +119,9 @@ public class detalleViewModel extends BaseViewModel {
         return lugarMutableLiveData;
     }
 
+    public MutableLiveData<List<TipoInmuebleResponse>> getTipoInmuebleMutableLiveData() {
+        return tipoMutableLiveData;
+    }
     public MutableLiveData<List<GaleriaResponse>> getGaleriaMutableLiveData() {
         return galeriaMutableLiveData;
     }
@@ -142,6 +156,11 @@ public class detalleViewModel extends BaseViewModel {
     {
         onRetrieveData();
         new detalleViewModel.ValidateRequestGridTask(idCatalogo, idTipo,this).execute();
+    }
+    public void requestTipoInmueble(Integer idCatalogo)
+    {
+        onRetrieveData();
+        new detalleViewModel.ValidateRequestTipoInmueble(idCatalogo, this).execute();
     }
     public void requestPlano(Integer idInmueble)
     {
@@ -267,6 +286,35 @@ public class detalleViewModel extends BaseViewModel {
 
             if (aBoolean) {
                 viewModel.datamodel.requestGrid(idCatalogo, idTipo);
+            }
+            else {
+                viewModel.messageResult.setValue("No tienes acceso a internet");
+                viewModel.onRetrieveDataFinish();
+            }
+
+        }
+    }
+    private static class ValidateRequestTipoInmueble extends AsyncTask<Void,Void,Boolean>
+    {
+        detalleViewModel viewModel;
+        Integer idCatalogo;
+
+        ValidateRequestTipoInmueble(Integer idCatalogo, detalleViewModel viewModel)
+        {
+            this.viewModel = viewModel;
+            this.idCatalogo=idCatalogo;
+        }
+        @Override
+        protected Boolean doInBackground(Void... voids) {
+            return Helper.isOnline();
+        }
+
+        @Override
+        protected void onPostExecute(Boolean aBoolean) {
+            super.onPostExecute(aBoolean);
+
+            if (aBoolean) {
+                viewModel.datamodel.requestTipoInmueble(idCatalogo);
             }
             else {
                 viewModel.messageResult.setValue("No tienes acceso a internet");

@@ -47,6 +47,12 @@ public class VentaResponse {
     @SerializedName("logoProyecto")
     public String logoProyecto;
 
+    @SerializedName("coordX")
+    private String coordX;
+
+    @SerializedName("coordY")
+    private String coordY;
+
     public int getIdCatalogo() {
         return idCatalogo;
     }
@@ -157,5 +163,21 @@ public class VentaResponse {
 
     public void setLogoProyecto(String logoProyecto) {
         this.logoProyecto = logoProyecto;
+    }
+
+    public String getCoordX() {
+        return coordX;
+    }
+
+    public void setCoordX(String coordX) {
+        this.coordX = coordX;
+    }
+
+    public String getCoordY() {
+        return coordY;
+    }
+
+    public void setCoordY(String coordY) {
+        this.coordY = coordY;
     }
 }

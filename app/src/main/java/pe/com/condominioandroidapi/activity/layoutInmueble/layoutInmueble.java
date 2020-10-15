@@ -11,8 +11,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -53,7 +55,8 @@ public class layoutInmueble extends BaseActivity {
     TextView tvCodigo;
     @BindView(R.id.logo_proyecto)
     ImageView logo_proyecto;
-
+    @BindView(R.id.pgbDialog)
+    ProgressBar pgbDialog;
 
 
     LayoutInmViewModel viewModel;
@@ -68,6 +71,8 @@ public class layoutInmueble extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_inm_fragment);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
+                WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
         ButterKnife.bind(this);
         initializeToolbar("");
         initializeObjects();
@@ -92,7 +97,6 @@ public class layoutInmueble extends BaseActivity {
     public void initializeObservers() {
 
         viewModel.getlayoutListMutableLiveData().observeForever(inmueble -> {
-            Log.d("obtener", inmueble.toString());
             tvInfo.setTextColor(Color.parseColor(inmueble.get(0).getColorHexadecimal()));
             tvCondominio.setTextColor(Color.parseColor(inmueble.get(0).getColorHexadecimal()));
             tvDocumentacion.setTextColor(Color.parseColor(inmueble.get(0).getColorHexadecimal()));
@@ -112,10 +116,25 @@ public class layoutInmueble extends BaseActivity {
             logo_proyecto.setImageBitmap(decodedByte);
             Constant.ID_LOGOEMPRESA = inmueble.get(0).getLogoArchivo();
             ID_LOGOPROYECTO = inmueble.get(0).getArchivo();
+            getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
 
             initializeToolbar(Constant.ID_LOGOEMPRESA);
 
 
+        });
+        viewModel.getPgbVisibility().observe(this, new Observer<Integer>() {
+            @Override
+            public void onChanged(@Nullable Integer value) {
+                // Desde el ViewModel recibimos solo dos tipos de valores 1 o 0 (View.VISIBLE o View.GONE) que sirven para mostrar o esconder un widget
+                if (value != null)
+                    pgbDialog.setVisibility(value);
+            }
+        });
+        viewModel.getMessage().observe(this, new Observer<String>() {
+            @Override
+            public void onChanged(@Nullable String message) {
+               // showMessage(message);
+            }
         });
 
     }
@@ -133,7 +152,7 @@ public class layoutInmueble extends BaseActivity {
         intent.putExtra(Constant.CODIGO_INMUEBLE ,codigo);
         intent.putExtra(Constant.ID_OPCION ,"1");
         intent.putExtra(Constant.id_Inmueble ,idInmueble);
-        intent.putExtra(Constant.ID_LOGOPROYECTO ,ID_LOGOPROYECTO);
+         intent.putExtra(Constant.ID_LOGOPROYECTO ,ID_LOGOPROYECTO);
 
 
 
