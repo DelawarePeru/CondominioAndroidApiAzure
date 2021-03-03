@@ -100,6 +100,7 @@ public class UserDataModel extends BaseDataModel {
                                 userResult.setValue(response.body());
                             } else {
                                 errorMessageLiveData.setValue("Datos ingresado incorrectos.");
+
                                 Constant.setupAuthentication("");
                             }
                         } else {
